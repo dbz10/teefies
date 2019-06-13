@@ -1,2 +1,3 @@
 teefies/scraping/html_pages/
 geckodriver.log
+/data/html_pages/*
