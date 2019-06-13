@@ -14,7 +14,7 @@ class NewVisitorTest(unittest.TestCase):
 		self.browser.get('http://localhost:5000')
 
 		# He notices the page title and is invited to enter a food that Lenny likes.
-		self.assertIn('HappyKitty',self.browser.title)
+		self.assertIn('PickyKitty',self.browser.title)
 		self.fail('Finish the test!')
 
 
