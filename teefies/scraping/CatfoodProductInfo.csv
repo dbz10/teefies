@@ -1,0 +1,502 @@
+product,brand,price,oz_per_can,num_cans,price_per_oz
+"Fancy Feast Grilled Seafood Feast Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.79,3.0,24.0,0.20541666666666666
+"Friskies Shreds Variety Pack Canned Cat Food, 5.5-oz, case of 32",Friskies,$16.64,5.5,32.0,0.09454545454545454
+"Friskies Classic Pate Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.89,5.5,24.0,0.10522727272727272
+"Fancy Feast Gravy Lovers Poultry & Beef Feast Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.40,3.0,24.0,0.2
+"Friskies Tasty Treasures with Cheese Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Fancy Feast Poultry & Beef Classic Pate Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.21,3.0,24.0,0.18347222222222223
+"Friskies Classic Pate Seafood Variety Pack Canned Cat Food, 5.5-oz, case of 32",Friskies,$16.64,5.5,32.0,0.09454545454545454
+"Royal Canin Veterinary Diet Urinary SO in Gel Canned Cat Food, 5.8-oz, case of 24",Royal Canin Veterinary Diet,$49.39,5.8,24.0,0.35481321839080465
+"Fancy Feast Classic Seafood Feast Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.88,3.0,24.0,0.20666666666666667
+"Fancy Feast Classic Poultry & Beef Feast Variety Pack Canned Cat Food, 3-oz, case of 30",Fancy Feast,$17.64,3.0,30.0,0.196
+"Friskies Extra Gravy Chunky Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Fancy Feast Medleys Primavera Collection Variety Pack Canned Cat Food, 3-oz, case of 12",Fancy Feast,$9.96,3.0,12.0,0.27666666666666667
+"Friskies Poultry Variety Pack Canned Cat Food, 5.5-oz, case of 32",Friskies,$16.64,5.5,32.0,0.09454545454545454
+"Fancy Feast Classic Chicken Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.99,3.0,24.0,0.20819444444444446
+"Royal Canin Veterinary Diet Urinary SO Morsels in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin Veterinary Diet,$36.09,3.0,24.0,0.5012500000000001
+"Fancy Feast Medleys White Meat Chicken Recipe Variety Collection Pack Canned Cat Food, 3-oz, case of 12",Fancy Feast,$8.92,3.0,12.0,0.24777777777777776
+"Friskies Indoor Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Hill's Prescription Diet c/d Multicare Urinary Care with Chicken Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$48.99,5.5,24.0,0.37113636363636365
+"Blue Buffalo Healthy Gourmet Variety Pack with Flaked Tuna, Fish & Shrimp & Chicken Canned Cat Food, 3-oz, case of 12",Blue Buffalo,$14.57,3.0,12.0,0.4047222222222222
+"Friskies Classic Pate Turkey & Giblets Dinner Canned Cat Food, 13-oz, case of 12",Friskies,$11.88,13.0,12.0,0.07615384615384616
+"Fancy Feast Delights with Cheddar Grilled Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.59,3.0,24.0,0.21652777777777776
+"Friskies Extra Gravy Pate Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.92,5.5,24.0,0.10545454545454545
+"Friskies Shreds in Gravy Variety Pack Canned Cat Food, 5.5-oz, case of 40",Friskies,$20.80,5.5,40.0,0.09454545454545454
+"Fancy Feast Classic Tender Beef Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Hill's Prescription Diet c/d Multicare Urinary Care Chicken & Vegetable Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$35.69,2.9,24.0,0.5127873563218391
+"Sheba Perfect Portions Grain-Free Multipack Roasted Chicken, Gourmet Salmon & Tender Turkey Cuts in Gravy Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$14.40,2.6,24.0,0.23076923076923075
+"Fancy Feast Classic Tender Liver & Chicken Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$16.79,3.0,24.0,0.23319444444444443
+"Fancy Feast Gravy Lovers Chicken Feast in Grilled Chicken Flavor Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$16.80,3.0,24.0,0.23333333333333334
+"Friskies Prime Filets Seafood Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Fancy Feast Grilled Tuna Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.96,3.0,24.0,0.18000000000000002
+"Fancy Feast Gravy Lovers Ocean Whitefish & Tuna Feast in Sauteed Seafood Flavor Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.96,3.0,24.0,0.18000000000000002
+"Fancy Feast Classic Salmon & Shrimp Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.20,3.0,24.0,0.18333333333333332
+"Hill's Prescription Diet k/d Kidney Care Chicken & Vegetable Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$37.99,2.9,24.0,0.5458333333333334
+"Purina Pro Plan Focus Adult Urinary Tract Health Formula Chicken Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Hill's Prescription Diet k/d Kidney Care Vegetable & Tuna Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$37.99,2.9,24.0,0.5458333333333334
+"Sheba Perfect Portions Seafood Pate Variety Pack Grain-Free Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Sheba Perfect Portions Grain-Free Gourmet Salmon Cuts in Gravy Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Blue Buffalo Wilderness Wild Delights Chicken & Salmon in Tasty Gravy Grain-Free Canned Cat Food, 3-oz, case of 24",Blue Buffalo,$31.99,3.0,24.0,0.4443055555555555
+"Wellness Natural Grain Free Gravies Tuna Dinner Canned Cat Food, 3-oz, case of 12",Wellness,$14.76,3.0,12.0,0.41
+"BFF OMG Tuna & Beef Baby Cakes Dinner in Gravy Wet Cat Food Pouches, 3-oz, case of 12",BFF,$13.49,3.0,12.0,0.37472222222222223
+"Fancy Feast Medleys Tastemakers White Meat Chicken & Tuna Recipe Canned Cat Food, 3-oz, case of 24",Fancy Feast,$21.49,3.0,24.0,0.2984722222222222
+"Hill's Prescription Diet k/d Early Support Chicken Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$36.99,2.9,24.0,0.5314655172413794
+"Sheba Perfect Portions Grain-Free Gourmet Chicken & Tuna Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Evanger's Grain-Free Rabbit Canned Dog & Cat Food, 12.8-oz, case of 12",Evanger's,$36.99,2.8,12.0,1.1008928571428573
+"Friskies Savory Shreds with Turkey & Giblets in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Fancy Feast Gourmet Naturals Beef Recipe Pate Canned Cat Food, 3-oz, case of 12",Fancy Feast,$10.20,3.0,12.0,0.2833333333333333
+"Instinct by Nature's Variety Original Grain-Free Real Duck Recipe Natural Wet Canned Cat Food, 5.5-oz, case of 12",Instinct,$34.80,5.5,12.0,0.5272727272727272
+"Friskies Extra Gravy Chunky with Beef in Savory Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.49,5.5,24.0,0.09462121212121212
+"Wellness Minced Poultry Pleasers Variety Pack Grain-Free Canned Cat Food, 5.5-oz, case of 30",Wellness,$59.99,5.5,30.0,0.3635757575757576
+"Hill's Prescription Diet k/d Kidney Care + Mobility Care with Chicken & Vegetable Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$45.99,2.9,24.0,0.6607758620689655
+"Fancy Feast Flaked Salmon & Ocean Whitefish Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Hill's Prescription Diet Metabolic Weight Management Vegetable & Chicken Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$36.99,2.9,24.0,0.5314655172413794
+"Meow Mix Savory Morsels Seafood Favorites Variety Pack Cat Food Trays, 2.75-oz, case of 12",Meow Mix,$5.74,75.0,12.0,0.006377777777777778
+"Friskies Classic Pate Classic Seafood Entree Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Merrick Purrfect Bistro Grain-Free Duck Pate Canned Cat Food, 5.5-oz, case of 24",Merrick,$38.66,5.5,24.0,0.29287878787878785
+"Fancy Feast Grilled Tender Beef & Liver Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.20,3.0,24.0,0.18333333333333332
+"Fancy Feast Roasted Chicken Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.97,3.0,24.0,0.20791666666666667
+"Purina Pro Plan Focus Kitten Flaked Ocean Whitefish & Tuna Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Earthborn Holistic Chicken Jumble with Liver Grain-Free Natural Canned Cat & Kitten Food, 5.5-oz, case of 24",Earthborn Holistic,$38.16,5.5,24.0,0.28909090909090907
+"Purina Pro Plan Classic Adult True Nature Natural Turkey & Chicken Entree Grain-Free Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"BFF OMG Tuna & Lamb Luv Ya Dinner in Gravy Wet Cat Food Pouches, 3-oz, case of 12",BFF,$13.49,3.0,12.0,0.37472222222222223
+"Instinct by Nature's Variety Kitten Grain-Free Real Chicken Recipe Natural Wet Canned Cat Food, 5.5-oz, case of 12",Instinct,$22.92,5.5,12.0,0.3472727272727273
+"Hill's Science Diet Adult Healthy Cuisine Seared Tuna & Carrot Medley Canned Cat Food, 2.8-oz, case of 24",Hill's Science Diet,$26.64,2.8,24.0,0.3964285714285715
+"Merrick Backcountry Grain-Free Morsels in Gravy Real Rabbit Recipe Cuts Cat Food Pouches, 3-oz, case of 24",Merrick,$32.18,3.0,24.0,0.4469444444444444
+"Fancy Feast Gourmet Naturals Tuna Recipe in Gravy Canned Cat Food, 3-oz, case of 12",Fancy Feast,$10.20,3.0,12.0,0.2833333333333333
+"Hill's Science Diet Adult Savory Salmon Entree Canned Cat Food, 5.5-oz, case of 24",Hill's Science Diet,$30.00,5.5,24.0,0.22727272727272727
+"Blue Buffalo Wilderness Turkey Grain-Free Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$30.96,5.5,24.0,0.23454545454545456
+"Blue Buffalo Wilderness Wild Delights Flaked Chicken & Trout in Tasty Gravy for Kittens Grain-Free Canned Cat Food, 3-oz, case of 24",Blue Buffalo,$30.75,3.0,24.0,0.4270833333333333
+"Purina ONE True Instinct 4 Flavors Variety Pack Canned Cat Food, 3-oz, case of 24",Purina ONE,$21.29,3.0,24.0,0.2956944444444444
+"Evanger's Low Fat Vegetarian Dinner Canned Dog & Cat Food, 12.8-oz, case of 12",Evanger's,$26.33,2.8,12.0,0.7836309523809525
+"Purina ONE Beef Recipe Pate Grain-Free Canned Cat Food, 3-oz, case of 24",Purina ONE,$19.38,3.0,24.0,0.26916666666666667
+"Halo Whitefish Recipe Grain-Free Indoor Cat Canned Cat Food, 5.5-oz, case of 12",Halo,$18.99,5.5,12.0,0.2877272727272727
+"Wellness CORE Grain-Free Chicken, Turkey & Chicken Liver Formula Canned Cat Food, 5.5-oz, case of 24",Wellness,$51.46,5.5,24.0,0.38984848484848483
+"Friskies Prime Filets with Beef in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Blue Buffalo Wilderness Kitten Chicken Grain-Free Canned Cat Food, 3-oz, case of 24",Blue Buffalo,$29.99,3.0,24.0,0.4165277777777778
+"Merrick Purrfect Bistro Grain-Free Turkey Pate Canned Cat Food, 5.5-oz, case of 24",Merrick,$38.66,5.5,24.0,0.29287878787878785
+"Fussie Cat Premium Tuna with Ocean Fish Formula in Aspic Grain-Free Canned Cat Food, 2.82-oz, case of 24",Fussie Cat,$30.96,82.0,24.0,0.01573170731707317
+"Royal Canin Spayed/Neutered Thin Slices in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin,$36.50,3.0,24.0,0.5069444444444444
+"Wellness Complete Health Adult Beef & Chicken Formula Grain-Free Canned Cat Food, 12.5-oz, case of 12",Wellness,$37.56,2.5,12.0,1.252
+"Weruva Slide N' Serve The Showcase Chowdown Variety Pack Pate Grain-Free Cat Food Pouches, 2.8-oz pouch, case of 16",Weruva,$23.99,2.8,16.0,0.5354910714285714
+"Purina Pro Plan Focus Sensitive Skin & Stomach Classic Duck Grain-Free Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Sheba Perfect Portions Grain-Free Multipack Roasted Chicken, Gourmet Salmon & Signature Tuna Cuts in Gravy Cat Food Trays, 2.6-oz, case of 18 twin-packs",Sheba,$14.40,2.6,18.0,0.30769230769230765
+"Purina Pro Plan True Nature Classic Natural Chicken & Liver Entree Grain-Free Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Purina Pro Plan Adult Chicken Entree in Gravy Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan,$32.88,5.5,24.0,0.2490909090909091
+"Friskies Flaked with Tuna in Sauce Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Blue Buffalo Wilderness Wild Delights Minced Chicken & Turkey in Tasty Gravy Grain-Free Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$37.99,5.5,24.0,0.28780303030303034
+"Taste of the Wild Rocky Mountain Grain-Free Canned Cat Food, 5.5-oz, case of 24",Taste of the Wild,$30.96,5.5,24.0,0.23454545454545456
+"Hill's Prescription Diet Metabolic Weight Management Chicken Flavor Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$48.99,5.5,24.0,0.37113636363636365
+"Friskies Cat Concoctions with Scrumptious Salmon & Chicken Liver Dinner Pate Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Wellness CORE Grain-Free Indoor Chicken & Chicken Liver Recipe Canned Cat Food, 5.5-oz, case of 24",Wellness,$61.44,5.5,24.0,0.46545454545454545
+"Hill's Science Diet Adult Tender Tuna Dinner Canned Cat Food, 5.5-oz, case of 24",Hill's Science Diet,$30.00,5.5,24.0,0.22727272727272727
+"Natural Balance Ultra Premium Chicken & Liver Pate Formula Canned Cat Food, 5.5-oz, case of 24",Natural Balance,$38.20,5.5,24.0,0.2893939393939394
+"Nutro Perfect Portions Grain-Free Pate Variety Pack Chicken, Salmon & Tuna, Chicken & Liver Recipe Adult Cat Food Trays, 2.64-oz, case of 24 twin-packs",Nutro,$27.99,64.0,24.0,0.01822265625
+"Wellness Natural Grain Free Gravies Turkey Dinner Canned Cat Food, 3-oz, case of 12",Wellness,$14.76,3.0,12.0,0.41
+"Sheba Perfect Portions Grain-Free Signature Seafood Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Friskies Tasty Treasures Pate Turkey & Chicken Dinner with Cheese Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Tiki Cat Hanalei Luau Wild Salmon in Salmon Consomme Grain-Free Canned Cat Food, 2.8-oz, case of 12",Tiki Cat,$18.25,2.8,12.0,0.543154761904762
+"Friskies Prime Filets with Salmon & Beef in Sauce Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Blue Buffalo Wilderness Mature Chicken Recipe Grain-Free Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$35.99,5.5,24.0,0.27265151515151514
+"Friskies Indoor Homestyle Turkey Dinner Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.92,5.5,24.0,0.10545454545454545
+"Fancy Feast Poultry & Beef Collection Variety Pack Canned Cat Food, 3-oz, case of 45",Fancy Feast,$34.99,3.0,45.0,0.2591851851851852
+"Friskies Savory Shreds Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.99,5.5,24.0,0.0984090909090909
+"Merrick Purrfect Bistro Rabbit Pate Grain-Free Canned Cat Food, 5.5-oz, case of 24",Merrick,$38.66,5.5,24.0,0.29287878787878785
+"Fancy Feast Gourmet Naturals Wild Alaskan Salmon & Shrimp Recipe in Gravy Canned Cat Food, 3-oz, case of 12",Fancy Feast,$10.20,3.0,12.0,0.2833333333333333
+"Rachael Ray Nutrish Chicken Purrcata Natural Grain-Free Wet Cat Food, 2.8-oz, case of 24",Rachael Ray Nutrish,$21.96,2.8,24.0,0.32678571428571435
+"Hill's Science Diet Adult Hairball Control Savory Chicken Entree Canned Cat Food, 5.5-oz, case of 24",Hill's Science Diet,$32.40,5.5,24.0,0.24545454545454545
+"Wellness CORE Natural Grain Free Turkey & Duck Pate Canned Cat Food, 3-oz, case of 12",Wellness,$20.40,3.0,12.0,0.5666666666666667
+"Purina Pro Plan Savor Adult Salmon & Rice Entree in Sauce Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Hill's Prescription Diet y/d Thyroid Care with Chicken Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$58.99,5.5,24.0,0.4468939393939394
+"Fancy Feast Grilled Chicken & Beef Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.47,3.0,24.0,0.17319444444444446
+"Wellness CORE Signature Selects Flaked Skipjack Tuna & Shrimp Entree in Broth Grain-Free Canned Cat Food, 5.3-oz, case of 12",Wellness,$31.80,5.3,12.0,0.5000000000000001
+"Miko Whole Ingredient Seafood & Chicken Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 12",Miko,$11.99,3.0,12.0,0.33305555555555555
+"Blue Buffalo Healthy Gourmet Pate Chicken Entree Indoor Adult Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$25.46,5.5,24.0,0.19287878787878787
+"Tiki Cat Puka Puka Luau Succulent Chicken in Chicken Consomme Grain-Free Canned Cat Food, 2.8-oz, case of 12",Tiki Cat,$18.25,2.8,12.0,0.543154761904762
+"Fussie Cat Premium Tuna with Salmon Formula in Aspic Grain-Free Canned Cat Food, 2.82-oz, case of 24",Fussie Cat,$33.36,82.0,24.0,0.016951219512195123
+"Fancy Feast Grilled Liver & Chicken Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.83,3.0,24.0,0.19208333333333333
+"Rachael Ray Nutrish Ocean Lovers Variety Pack Natural Grain-Free Wet Cat Food, 2.8-oz, case of 12",Rachael Ray Nutrish,$10.98,2.8,12.0,0.32678571428571435
+"Friskies Indoor Saucy Seafood Bake Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.49,5.5,24.0,0.09462121212121212
+"Earthborn Holistic Chicken Catcciatori Grain-Free Natural Adult Canned Cat Food, 5.5-oz, case of 24",Earthborn Holistic,$38.16,5.5,24.0,0.28909090909090907
+"Purina ONE True Instinct 3 Flavors Variety Pack Canned Cat Food, 3-oz, case of 12",Purina ONE,$9.96,3.0,12.0,0.27666666666666667
+"Fancy Feast Flaked Trout Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Sheba Perfect Portions Multipack Poultry Entrees Cat Food Trays, 2.6-oz, case of 12 twin-packs",Sheba,$9.60,2.6,12.0,0.30769230769230765
+"Friskies Classic Pate Mariner's Catch Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Hill's Science Diet Adult Savory Entree Variety Pack Canned Cat Food, 5.5-oz, case of 12",Hill's Science Diet,$14.99,5.5,12.0,0.2271212121212121
+"BFF OMG Tuna & Salmon Sweet Cheeks Dinner in Gravy Wet Cat Food Pouches, 3-oz, case of 12",BFF,$13.49,3.0,12.0,0.37472222222222223
+"Purina Pro Plan Veterinary Diets UR Savory Selects Urinary St/Ox Turkey & Giblets Recipe In Sauce Canned Cat Food, 5.5-oz case of 24",Purina Pro Plan Veterinary Diets,$48.99,5.5,24.0,0.37113636363636365
+"Fancy Feast Sliced Poultry & Beef Feast Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.79,3.0,24.0,0.20541666666666666
+"Whiskas Purrfectly Chicken Entree Cat Food Pouches, 3-oz, case of 24",Whiskas,$14.06,3.0,24.0,0.19527777777777777
+"Purina Pro Plan Focus Adult 11+ Classic Salmon & Tuna Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Iams Purrfect Delights Chicken-dulgence Entree Pate in Gravy Canned Cat Food, 3-oz, case of 24",Iams,$14.16,3.0,24.0,0.19666666666666666
+"Iams Perfect Portions Indoor Multipack Salmon &Turkey Recipe Pate Grain-Free Cat Food Trays, 2.6-oz, case of 12 twin-packs",Iams,$10.98,2.6,12.0,0.3519230769230769
+"Friskies Tasty Treasures Pate Beef & Liver Dinner with Cheese Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.49,5.5,24.0,0.09462121212121212
+"Fancy Feast Chicken Feast Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.43,3.0,24.0,0.20041666666666666
+"Friskies Prime Filets Turkey Dinner in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Tiny Tiger Chunks in Gravy Seafood Recipes Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Purina Pro Plan Focus Adult Classic Urinary Tract Health Formula Turkey & Giblets Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Purina Pro Plan Savor Adult Chunky Chicken Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$21.36,3.0,24.0,0.29666666666666663
+"Blue Buffalo Wilderness Chicken Grain-Free Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$29.30,5.5,24.0,0.22196969696969698
+"Hill's Science Diet Adult Tender Dinner Variety Pack Canned Cat Food, 5.5-oz, case of 12",Hill's Science Diet,$14.99,5.5,12.0,0.2271212121212121
+"Purina Pro Plan Savor Adult Chicken & Cheese Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Purina Pro Plan Veterinary Diets UR St/Ox Urinary Formula Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan Veterinary Diets,$48.99,5.5,24.0,0.37113636363636365
+"American Journey Pate Poultry Variety Pack Grain-Free Canned Cat Food, 12.5-oz, case of 12",American Journey,$26.99,2.5,12.0,0.8996666666666666
+"Blue Buffalo Wilderness Pate Kitten Variety Pack with Chicken & Salmon Grain-Free Cat Food Trays, 3-oz, case of 6",Blue Buffalo,$7.99,3.0,6.0,0.4438888888888889
+"Friskies Classic Pate Supreme Supper Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.96,5.5,24.0,0.09818181818181819
+"9 Lives Meaty Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 36",9 Lives,$12.28,5.5,36.0,0.06202020202020202
+"Purina Pro Plan Savor Adult Chicken & Rice Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Purina Pro Plan Savor Adult Seafood Stew Entree in Sauce Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Tiki Cat Queen Emma Luau Variety Pack Grain-Free Canned Cat Food, 2.8-oz, case of 12",Tiki Cat,$17.99,2.8,12.0,0.5354166666666668
+"Friskies Meaty Bits Ocean Fish in Sauce Canned Cat Food, 13.5-oz can, case of 12",Friskies,$12.00,3.5,12.0,0.2857142857142857
+"Fancy Feast Purely White Meat Chicken & Shredded Beef Wet Cat Food, 2-oz tray, case of 10",Fancy Feast,$8.93,2.0,10.0,0.4465
+"9 Lives Poultry & Beef Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 24",9 Lives,$8.32,5.5,24.0,0.06303030303030303
+"Fancy Feast Grilled Ocean Whitefish & Tuna Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.19,3.0,24.0,0.19708333333333333
+"Nutro Max Adult Turkey & Chicken Liver Entree Chunks in Sauce Canned Cat Food, 3-oz, case of 24",Nutro Max,$19.20,3.0,24.0,0.26666666666666666
+"Fancy Feast Medleys Wild Salmon Florentine Canned Cat Food, 3-oz, case of 24",Fancy Feast,$17.99,3.0,24.0,0.2498611111111111
+"Blue Buffalo Freedom Indoor Mature Chicken Recipe Grain-Free Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$33.73,5.5,24.0,0.255530303030303
+"Friskies Savory Shreds with Chicken in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Royal Canin Veterinary Diet Gastrointestinal High Energy Canned Cat Food, 5.8-oz, case of 24",Royal Canin Veterinary Diet,$49.39,5.8,24.0,0.35481321839080465
+"Friskies Extra Gravy Pate with Chicken in Savory Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$11.04,5.5,24.0,0.08363636363636363
+"Fancy Feast Kitten Tender Ocean Whitefish Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.43,3.0,24.0,0.18652777777777776
+"Whiskas Choice Cuts Poultry Selections Cat Food Pouches, 3-oz, case of 12",Whiskas,$5.74,3.0,12.0,0.15944444444444444
+"Fancy Feast Purely Wild Alaskan Salmon & White Meat Chicken Entree Wet Cat Food, 2-oz tray, case of 10",Fancy Feast,$9.65,2.0,10.0,0.48250000000000004
+"Purina Pro Plan Savor Adult Tuna Entree in Sauce Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Merrick Purrfect Bistro Grain-Free Chicken Pate Canned Cat Food, 5.5-oz, case of 24",Merrick,$38.66,5.5,24.0,0.29287878787878785
+"Purina Pro Plan Focus Adult Classic Urinary Tract Health Formula Ocean Whitefish Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Purina Pro Plan Urinary Tract Health Variety Pack Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$11.49,3.0,24.0,0.15958333333333333
+"Friskies Flaked with Tuna & Egg in Sauce Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.96,5.5,24.0,0.09818181818181819
+"Sheba Perfect Portions Grain-Free Roasted Chicken Cuts in Gravy Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Fancy Feast Gourmet Naturals Seafood Variety Pack Canned Cat Food, 3-oz, case of 30",Fancy Feast,$24.98,3.0,30.0,0.27755555555555556
+"Hill's Prescription Diet a/d Urgent Care with Chicken Canned Dog & Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$61.99,5.5,24.0,0.46962121212121216
+"Fancy Feast Gourmet Naturals Poultry & Beef Variety Pack Canned Cat Food, 3-oz, case of 30",Fancy Feast,$24.98,3.0,30.0,0.27755555555555556
+"Rachael Ray Nutrish Natural Grain-Free Surf 'n Turf Variety Pack Wet Cat Food, 2.8-oz, case of 12",Rachael Ray Nutrish,$10.98,2.8,12.0,0.32678571428571435
+"Purina Beyond Grain-Free Chicken, Beef & Carrot Recipe in Gravy Canned Cat Food, 3-oz, case of 12",Purina Beyond,$11.77,3.0,12.0,0.3269444444444444
+"Earthborn Holistic Monterey Medley Grain-Free Natural Canned Cat & Kitten Food, 5.5-oz, case of 24",Earthborn Holistic,$38.16,5.5,24.0,0.28909090909090907
+"Sheba Perfect Portions Grain-Free Tender Whitefish & Tuna Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Fancy Feast Grilled Beef Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.49,3.0,24.0,0.17347222222222222
+"Blue Buffalo Healthy Gourmet Pate Turkey & Chicken Entree Adult Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$28.08,5.5,24.0,0.2127272727272727
+"Friskies Savory Shreds with Whitefish & Sardines in Sauce Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.96,5.5,24.0,0.09818181818181819
+"Friskies Gravy Sensations Poultry Favorites Cat Food Pouches, 3-oz pouch, case of 12",Friskies,$6.12,3.0,12.0,0.17
+"Blue Buffalo Healthy Gourmet Flaked Tuna Entree in Gravy Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$28.08,5.5,24.0,0.2127272727272727
+"Sheba Perfect Portions Garden Medleys Tuna, Salmon & Vegetables Entree in Gravy Variety Pack Grain-Free Cat Food Trays, 2.6-oz, case of 12 twin packs",Sheba,$9.60,2.6,12.0,0.30769230769230765
+"Blue Buffalo Healthy Gourmet Meaty Morsels Tuna Entree Canned Cat Food, 3-oz, case of 24",Blue Buffalo,$23.99,3.0,24.0,0.3331944444444444
+"Halo Chicken Recipe Grain-Free Adult Canned Cat Food, 5.5-oz, case of 12",Halo,$21.52,5.5,12.0,0.32606060606060605
+"Purina Beyond Arctic Char & Spinach Pate Recipe Grain-Free Canned Cat Food, 3-oz, case of 12",Purina Beyond,$11.04,3.0,12.0,0.30666666666666664
+"Weruva Cats in the Kitchen Pumpkin Lickin' Chicken in Pumpkin Soup Grain-Free Cat Food Pouches, 3-oz pouch, case of 12",Weruva,$16.99,3.0,12.0,0.4719444444444444
+"Fancy Feast Marinated Morsels Chicken Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Hill's Science Diet Adult Sensitive Stomach & Skin Chicken & Vegetable Entrée Canned Cat Food, 2.9-oz, case of 24",Hill's Science Diet,$26.64,2.9,24.0,0.3827586206896552
+"Hill's Prescription Diet Metabolic + Urinary Tuna & Vegetable Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$42.89,2.9,24.0,0.6162356321839081
+"Purina Pro Plan Beef & Chicken Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Purina Pro Plan Focus Sensitive Skin & Stomach Classic Arctic Char Grain-Free Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Purina Beyond Quail & Carrot Pate Recipe Grain-Free Canned Cat Food, 3-oz, case of 12",Purina Beyond,$11.86,3.0,12.0,0.32944444444444443
+"AvoDerm Natural Grain-Free Tuna & Crab Entree in Gravy Canned Cat Food, 3-oz, case of 24",AvoDerm,$23.76,3.0,24.0,0.33
+"Friskies Classic Pate Sea Captain's Choice Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Instinct by Nature's Variety Original Grain-Free Real Salmon Recipe Natural Wet Canned Cat Food, 5.5-oz, case of 12",Instinct,$26.88,5.5,12.0,0.40727272727272723
+"Halo Chicken Recipe Grain-Free Indoor Cat Canned Cat Food, 5.5-oz, case of 12",Halo,$20.44,5.5,12.0,0.3096969696969697
+"Purina Pro Plan Veterinary Diets NF Kidney Function Early Care Formula Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan Veterinary Diets,$47.99,5.5,24.0,0.3635606060606061
+"Merrick Purrfect Bistro Beef Pate Grain-Free Canned Cat Food, 5.5-oz, case of 24",Merrick,$38.66,5.5,24.0,0.29287878787878785
+"Blue Buffalo Wilderness Duck Grain-Free Canned Cat Food, 3-oz, case of 24",Blue Buffalo,$26.88,3.0,24.0,0.3733333333333333
+"Instinct by Nature's Variety Grain-Free Minced Recipe with Real Rabbit Wet Cat Food Cups, 3.5-oz, case of 12",Instinct,$21.48,3.5,12.0,0.5114285714285715
+"Friskies Gravy Sensations Seafood Favorites Cat Food Pouches, 3-oz pouch, case of 12",Friskies,$6.12,3.0,12.0,0.17
+"BFF OMG Tuna & Turkey Tickles Dinner in Gravy Wet Cat Food Pouches, 3-oz, case of 12",BFF,$13.49,3.0,12.0,0.37472222222222223
+"Purina Muse Natural Grain-Free Pate Canned Cat Food, Chicken Recipe, 3-oz, case of 24",Purina Muse,$30.00,3.0,24.0,0.4166666666666667
+"Hill's Science Diet Adult 11+ Healthy Cuisine Seared Tuna & Carrot Medley Canned Cat Food, 2.8-oz, case of 24",Hill's Science Diet,$26.64,2.8,24.0,0.3964285714285715
+"Purina Pro Plan Savor Adult Sole & Vegetable Entree in Sauce Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Sheba Perfect Portions Grain-Free Savory Mixed Grill Cuts in Gravy Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Blue Buffalo Healthy Gourmet Flaked Fish & Shrimp Entree in Gravy Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$29.99,5.5,24.0,0.22719696969696968
+"Halo Spot's Stew Chicken, Salmon, Turkey Variety Pack Grain-Free Canned Cat Food, 5.5-oz, case of 12",Halo,$21.52,5.5,12.0,0.32606060606060605
+"Fancy Feast Sliced Chicken Hearts & Liver Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.35,3.0,24.0,0.21319444444444444
+"Purina Pro Plan Chicken, Pasta & Spinach Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Fussie Cat Premium Tuna with Shrimp Formula in Aspic Grain-Free Canned Cat Food, 2.82-oz, case of 24",Fussie Cat,$33.36,82.0,24.0,0.016951219512195123
+"Purina Pro Plan Savor Adult Beef & Cheese Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Tiny Tiger Chunks in EXTRA Gravy Chicken Recipe Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Purina Pro Plan Veterinary Diets OM Savory Selects Overweight Management Formula Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan Veterinary Diets,$46.99,5.5,24.0,0.3559848484848485
+"Nutro Perfect Portions Grain-Free Chicken Recipe Cat Food Trays, 2.6-oz, case of 24",Nutro,$30.48,2.6,24.0,0.48846153846153845
+"Earthborn Holistic Catalina Catch Grain-Free Natural Canned Cat & Kitten Food, 5.5-oz, case of 24",Earthborn Holistic,$38.16,5.5,24.0,0.28909090909090907
+"Friskies Indoor Classic Pate Chicken Dinner Canned Cat Food, 5.5-oz, case of 24",Friskies,$16.98,5.5,24.0,0.12863636363636363
+"Friskies Extra Gravy Chunky With Turkey in Savory Gravy Canned Cat Food, 13.5-oz can, case of 12",Friskies,$12.00,3.5,12.0,0.2857142857142857
+"Instinct by Nature's Variety Original Grain-Free Real Rabbit Recipe Natural Wet Canned Cat Food, 5.5-oz, case of 12",Instinct,$37.08,5.5,12.0,0.5618181818181818
+"Purina Beyond Grain-Free Tuna, Mackerel & Carrot Recipe in Gravy Canned Cat Food, 3-oz, case of 12",Purina Beyond,$11.45,3.0,12.0,0.31805555555555554
+"Wellness CORE Signature Selects Shredded Boneless Chicken & Chicken Liver Entree in Sauce Grain-Free Canned Cat Food, 5.3-oz, case of 12",Wellness,$31.80,5.3,12.0,0.5000000000000001
+"Sheba Perfect Portions Grain-Free Roasted Turkey Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Iams Perfect Portions Healthy Kitten Chicken Recipe Pate Grain-Free Cat Food Trays, 2.6-oz, case of 24 twin-packs",Iams,$22.32,2.6,24.0,0.35769230769230764
+"Wellness CORE Signature Selects Shredded Boneless Chicken & Turkey Entree in Sauce Grain-Free Canned Cat Food, 5.3-oz, case of 12",Wellness,$31.80,5.3,12.0,0.5000000000000001
+"Purina Pro Plan Focus Adult Weight Management Ground Turkey & Rice Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Fancy Feast Creamy Delights Chicken Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.20,3.0,24.0,0.18333333333333332
+"Fancy Feast Seafood Collection Variety Pack Canned Cat Food, 3-oz, case of 45",Fancy Feast,$34.49,3.0,45.0,0.2554814814814815
+"Weruva Cats in the Kitchen Mack, Jack & Sam Salmon, Mackerel & Tuna Recipe Grain-Free Cat Food Pouches, 3-oz pouch, case of 12",Weruva,$16.99,3.0,12.0,0.4719444444444444
+"BFF OMG Tuna & Chicken Charm Me Dinner in Gravy Wet Cat Food Pouches, 3-oz, case of 12",BFF,$13.49,3.0,12.0,0.37472222222222223
+"Weruva Cats in the Kitchen Love Me Tender Chicken & Duck Recipe Grain-Free Cat Food Pouches, 3-oz pouch, case of 12",Weruva,$16.99,3.0,12.0,0.4719444444444444
+"Friskies Indoor Chunky Chicken & Turkey Casserole Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.68,5.5,24.0,0.10363636363636364
+"Fancy Feast Elegant Medleys Turkey Florentine Canned Cat Food, 3-oz, case of 24",Fancy Feast,$16.51,3.0,24.0,0.22930555555555557
+"Fancy Feast Gourmet Naturals Trout & Tuna Recipe Pate Canned Cat Food, 3-oz, case of 12",Fancy Feast,$10.20,3.0,12.0,0.2833333333333333
+"Hill's Prescription Diet Metabolic + Urinary Chicken & Vegetable Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$42.89,2.9,24.0,0.6162356321839081
+"Weruva Cats in the Kitchen Pumpkin Jack Splash Tuna in Pumpkin Soup Grain-Free Cat Food Pouches, 3-oz pouch, case of 12",Weruva,$16.99,3.0,12.0,0.4719444444444444
+"Fancy Feast Creamy Delights Salmon Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.47,3.0,24.0,0.17319444444444446
+"American Journey Pate Turkey & Salmon Recipe Grain-Free Canned Cat Food, 12.5-oz, case of 12",American Journey,$18.89,2.5,12.0,0.6296666666666667
+"BFF Batch 'O Besties Variety Pack Canned Cat Food, 5.5-oz, case of 8",BFF,$11.49,5.5,8.0,0.26113636363636367
+"Purina Beyond Grain-Free Chicken & Sweet Potato Pate Recipe Canned Cat Food, 3-oz, case of 12",Purina Beyond,$11.77,3.0,12.0,0.3269444444444444
+"Purina Pro Plan Veterinary Diets EN Gastroenteric Formula Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan Veterinary Diets,$47.99,5.5,24.0,0.3635606060606061
+"Rachael Ray Nutrish Tuna Purrfection Natural Grain-Free Wet Cat Food, 2.8-oz, case of 24",Rachael Ray Nutrish,$22.14,2.8,24.0,0.32946428571428577
+"Royal Canin Ultra Light Thin Slices in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin,$36.50,3.0,24.0,0.5069444444444444
+"Hill's Prescription Diet m/d GlucoSupport with Liver Flavor Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$47.49,5.5,24.0,0.3597727272727273
+"Fancy Feast Medleys Shredded Tuna Fare Canned Cat Food, 3-oz, case of 24",Fancy Feast,$18.96,3.0,24.0,0.26333333333333336
+"Friskies Extra Gravy Pate with Turkey in Savory Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Sheba Perfect Portions Grain-Free Savory Chicken Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Tiny Tiger Pate Turkey and Giblets Recipe Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Earthborn Holistic Harbor Harvest Grain-Free Natural Canned Cat & Kitten Food, 5.5-oz, case of 24",Earthborn Holistic,$38.16,5.5,24.0,0.28909090909090907
+"Purina Pro Plan Focus Adult Classic Urinary Tract Health Formula Beef & Chicken Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"American Journey Minced Salmon & Tuna Recipe in Gravy Grain-Free Canned Cat Food, 3-oz, case of 24",American Journey,$22.99,3.0,24.0,0.3193055555555555
+"Friskies Turkey & Chicken Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 40",Friskies,$22.19,5.5,40.0,0.10086363636363636
+"Nutro Perfect Portions Grain-Free Pate Multi-Pack Real Salmon & Tuna, Real Chicken & Shrimp Recipe Cat Food Trays, 2.65-oz, case of 12 twin-packs",Nutro,$13.97,65.0,12.0,0.01791025641025641
+"Sheba Perfect Portions Grain-Free Tender Beef Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Fancy Feast Kitten Tender Chicken Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$16.80,3.0,24.0,0.23333333333333334
+"Hill's Prescription Diet d/d Skin/Food Sensitivities Duck Formula Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$66.99,5.5,24.0,0.5075
+"Wellness Natural Grain Free Gravies Chicken Dinner Canned Cat Food, 3-oz, case of 12",Wellness,$14.76,3.0,12.0,0.41
+"Nutro Perfect Portions Grain-Free Pate Multi-Pack Real Turkey & Real Chicken Recipe Cat Food Trays, 2.65-oz, case of 12 twin-packs",Nutro,$13.97,65.0,12.0,0.01791025641025641
+"Weruva Cats in the Kitchen 1 If By Land, 2 If By Sea Tuna, Beef & Salmon Recipe Grain-Free Cat Food Pouches, 3-oz pouch, case of 12",Weruva,$16.99,3.0,12.0,0.4719444444444444
+"Meow Mix Tender Favorites with Real Salmon & Crab Meat in Sauce Cat Food Trays, 2.75-oz, case of 12",Meow Mix,$5.88,75.0,12.0,0.006533333333333333
+"Nutro Max Adult With Savory Venison Chunks in Sauce Canned Cat Food, 3-oz, case of 24",Nutro Max,$19.20,3.0,24.0,0.26666666666666666
+"Blue Buffalo Wilderness Wild Delights Chicken & Turkey in Tasty Gravy Grain-Free Canned Cat Food, 3-oz, case of 24",Blue Buffalo,$31.99,3.0,24.0,0.4443055555555555
+"Purina Pro Plan Adult Grain-Free Classic Chicken & Spinach Entrée Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Tiki Cat Hawaiian Grill Ahi Tuna Grain-Free Canned Cat Food, 2.8-oz, case of 12",Tiki Cat,$12.85,2.8,12.0,0.3824404761904762
+"Blue Buffalo Healthy Gourmet Meaty Morsels Chicken Entree Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$29.99,5.5,24.0,0.22719696969696968
+"Meow Mix Tender Favorites with Real Chicken & Beef in Sauce Cat Food Trays, 2.75-oz, case of 12",Meow Mix,$5.93,75.0,12.0,0.006588888888888889
+"9 Lives Seafood & Turkey Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 24",9 Lives,$8.32,5.5,24.0,0.06303030303030303
+"Sheba Perfect Portions Grain-Free Delicate Salmon Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Rachael Ray Nutrish Purrfect Entrees Grain-Free Variety Pack Wet Cat Food, 2-oz, case of 12",Rachael Ray Nutrish,$10.98,2.0,12.0,0.4575
+"Friskies Oceans of Delight Variety Pack Canned Cat Food, 5.5-oz, case of 40",Friskies,$23.25,5.5,40.0,0.10568181818181818
+"Fancy Feast Delights with Cheddar Grilled Whitefish & Cheddar Cheese Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.47,3.0,24.0,0.17319444444444446
+"Natural Balance L.I.D. Limited Ingredient Diets Chicken & Green Pea Formula Grain-Free Canned Cat Food, 5.5-oz, case of 24",Natural Balance,$38.20,5.5,24.0,0.2893939393939394
+"I and Love and You Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 12",I and Love and You,$13.29,3.0,12.0,0.36916666666666664
+"Crave Turkey Pate & Salmon Pate Multipack Grain-Free Cat Food Trays, 2.6-oz, case of 12 twin-packs",Crave,$12.97,2.6,12.0,0.41570512820512817
+"Purina Pro Plan Focus Adult 11+ Classic Chicken & Beef Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Blue Buffalo Wilderness Wild Delights Minced Chicken & Trout in Tasty Gravy Grain-Free Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$35.04,5.5,24.0,0.26545454545454544
+"Fancy Feast Medleys Shredded Wild Salmon Fare Canned Cat Food, 3-oz, case of 24",Fancy Feast,$18.00,3.0,24.0,0.25
+"Sheba Perfect Portions Grain-Free Multipack Savory Chicken, Delicate Salmon & Roasted Turkey Pate Cat Food Trays, 2.6-oz, case of 18 twin-packs",Sheba,$19.20,2.6,18.0,0.4102564102564102
+"Purina Pro Plan Savor Adult Chicken, Tomato & Pasta Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Weruva Paw Lickin' Chicken in Gravy Grain-Free Canned Cat Food, 10-oz, case of 12",Weruva,$40.99,10.0,12.0,0.34158333333333335
+"Blue Buffalo Basics Limited Ingredient Grain-Free Indoor Turkey & Potato Entree Adult Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$35.43,5.5,24.0,0.26840909090909093
+"Purina Beyond Grain-Free Trout & Catfish Pate Recipe Canned Cat Food, 3-oz, case of 12",Purina Beyond,$11.29,3.0,12.0,0.31361111111111106
+"Wellness Complete Health Chicken & Herring Formula Grain-Free Canned Cat Food, 12.5-oz, case of 12",Wellness,$37.56,2.5,12.0,1.252
+"Friskies Indoor Flaked Ocean Whitefish Dinner Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.96,5.5,24.0,0.09818181818181819
+"Purina Beyond Grain-Free Salmon & Sweet Potato Recipe in Gravy Canned Cat Food, 3-oz, case of 12",Purina Beyond,$12.05,3.0,12.0,0.33472222222222225
+"Hill's Science Diet Adult Savory Chicken Entree Canned Cat Food, 5.5-oz, case of 24",Hill's Science Diet,$30.00,5.5,24.0,0.22727272727272727
+"Fancy Feast Gourmet Naturals Wild Alaskan Salmon Recipe Pate Canned Cat Food, 3-oz, case of 12",Fancy Feast,$10.20,3.0,12.0,0.2833333333333333
+"Iams Purrfect Delights Tempt Me Tuna & Mackerel Dinner Flaked in Sauce Canned Cat Food, 3-oz, case of 24",Iams,$14.16,3.0,24.0,0.19666666666666666
+"Hill's Prescription Diet w/d Multi-Benefit Digestive/Weight/Glucose/Urinary Management with Chicken Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$46.99,5.5,24.0,0.3559848484848485
+"Purina Pro Plan Focus Kitten Favorites Variety Pack Canned Cat Food, 3-oz, case of 12",Purina Pro Plan,$11.49,3.0,12.0,0.31916666666666665
+"Fancy Feast Gravy Lovers Chicken & Beef Feast in Grilled Chicken Flavor Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.47,3.0,24.0,0.17319444444444446
+"Meow Mix Tender Favorites with Real Tuna & Whole Shrimp in Sauce Cat Food Trays, 2.75-oz, case of 12",Meow Mix,$5.88,75.0,12.0,0.006533333333333333
+"Fancy Feast Medleys Tuna Primavera Canned Cat Food, 3-oz, case of 24",Fancy Feast,$17.03,3.0,24.0,0.23652777777777778
+"Fancy Feast Flaked Chicken & Tuna Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.83,3.0,24.0,0.19208333333333333
+"Fancy Feast Grilled Seafood Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.87,3.0,24.0,0.20652777777777775
+"Purina Beyond Grain-Free Wild Salmon Pate Recipe Canned Cat Food, 3-oz, case of 12",Purina Beyond,$10.16,3.0,12.0,0.2822222222222222
+"Iams Perfect Portions Healthy Adult Multipack Chicken & Tuna Recipe Pate Grain-Free Cat Food Trays, 2.6-oz, case of 12 twin-packs",Iams,$10.98,2.6,12.0,0.3519230769230769
+"Sheba Perfect Portions Grain-Free Multipack Salmon & Tuna Cuts in Gravy Entree Cat Food Trays, 2.6-oz, case of 12 twin-packs",Sheba,$9.60,2.6,12.0,0.30769230769230765
+"Tiki Cat Aloha Friends Variety Pack Grain-Free Wet Cat Food, 3-oz can, case of 12",Tiki Cat,$10.69,3.0,12.0,0.29694444444444446
+"Purina Pro Plan Veterinary Diets UR Savory Selects Urinary St/Ox Salmon Recipe In Sauce Canned Cat Food, 5.5-oz case of 24",Purina Pro Plan Veterinary Diets,$48.99,5.5,24.0,0.37113636363636365
+"Iams Purrfect Delicacies Flaked Fish Variety Pack Canned Cat Food, 2.47-oz, case of 12",Iams,$10.60,47.0,12.0,0.01879432624113475
+"Purina Pro Plan Urinary Tract Health Variety Pack Canned Cat Food, 3-oz, case of 12",Purina Pro Plan,$11.49,3.0,12.0,0.31916666666666665
+"Royal Canin Mother & Babycat Ultra-Soft Mousse Canned Food for New Kittens, Nursing & Pregnant Mother Cats, 5.8-oz, case of 24",Royal Canin,$42.98,5.8,24.0,0.30876436781609196
+"Wellness Complete Health Turkey & Salmon Formula Grain-Free Canned Cat Food, 12.5-oz, case of 12",Wellness,$37.56,2.5,12.0,1.252
+"Blue Buffalo Freedom Indoor Adult Chicken Recipe Grain-Free Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$31.69,5.5,24.0,0.24007575757575758
+"Friskies Savory Shreds Turkey & Cheese Dinner in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Friskies Pate Salmon Dinner Canned Cat Food, 5.5-oz, case of 24",Friskies,$15.60,5.5,24.0,0.11818181818181818
+"Purina Beyond Grain-Free Turkey, Sweet Potato & Spinach Recipe in Gravy Canned Cat Food, 3-oz, case of 12",Purina Beyond,$11.29,3.0,12.0,0.31361111111111106
+"Meow Mix Simple Servings Poultry Variety Pack Cat Food Trays, 1.3-oz, case of 12",Meow Mix,$4.56,1.3,12.0,0.29230769230769227
+"Fancy Feast Gourmet Naturals White Meat Chicken Recipe Pate Canned Cat Food, 3-oz, case of 12",Fancy Feast,$10.20,3.0,12.0,0.2833333333333333
+"Nutro Max Adult With Savory Duck Chunks in Sauce Canned Cat Food, 3-oz, case of 24",Nutro Max,$19.20,3.0,24.0,0.26666666666666666
+"Nutro Max Adult Lamb & Turkey Cutlets Entree Chunks in Sauce Canned Cat Food, 3-oz, case of 24",Nutro Max,$19.20,3.0,24.0,0.26666666666666666
+"Royal Canin Veterinary Diet Selected Protein Adult PV in Gel Canned Cat Food, 5.6-oz, case of 24",Royal Canin Veterinary Diet,$71.24,5.6,24.0,0.5300595238095238
+"Weruva Cats in the Kitchen Variety Pack Grain-Free Cat Food Pouches, 3-oz, case of 12",Weruva,$16.99,3.0,12.0,0.4719444444444444
+"Nutro Max Adult Salmon Entree Chunks in Sauce Canned Cat Food, 3-oz, case of 24",Nutro Max,$19.20,3.0,24.0,0.26666666666666666
+"Wellness Complete Health Turkey Formula Grain-Free Canned Cat Food, 12.5-oz, case of 12",Wellness,$37.56,2.5,12.0,1.252
+"Friskies Meaty Bits Chicken Dinner in Gravy Canned Cat Food, 13-oz, case of 12",Friskies,$14.73,13.0,12.0,0.09442307692307693
+"Purina Pro Plan Savor Adult Turkey & Vegetable Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Hill's Science Diet Adult Urinary Hairball Control Chicken Entree Canned Cat Food, 2.9-oz, case of 24",Hill's Science Diet,$26.64,2.9,24.0,0.3827586206896552
+"Fancy Feast Medleys Tuna Florentine Canned Cat Food, 3-oz, case of 24",Fancy Feast,$18.96,3.0,24.0,0.26333333333333336
+"Friskies Classic Pate Country Style Dinner Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Purina Pro Plan Veterinary Diets UR St/Ox Savory Selects Feline Variety Pack Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan Veterinary Diets,$48.99,5.5,24.0,0.37113636363636365
+"Wellness CORE Signature Selects Flaked Skipjack Tuna & Wild Salmon Entree in Broth Grain-Free Canned Cat Food, 2.8-oz, case of 12",Wellness,$21.60,2.8,12.0,0.642857142857143
+"Wellness Complete Health Kitten Formula Grain-Free Canned Cat Food, 3-oz, case of 24",Wellness,$29.52,3.0,24.0,0.41
+"Fancy Feast Delights with Cheddar Grilled Chicken & Cheddar Cheese Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.70,3.0,24.0,0.20416666666666666
+"Royal Canin Feline Health Nutrition Thin Slices in Gravy Canned Kitten Food, 3-oz, case of 24",Royal Canin,$36.50,3.0,24.0,0.5069444444444444
+"Royal Canin Veterinary Diet Glycobalance Morsels In Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin Veterinary Diet,$35.14,3.0,24.0,0.4880555555555556
+"Royal Canin Digest Sensitive Thin Slices in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin,$36.50,3.0,24.0,0.5069444444444444
+"American Journey Minced Poultry & Seafood in Gravy Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",American Journey,$22.99,3.0,24.0,0.3193055555555555
+"Blue Buffalo Healthy Gourmet Adult Variety Pack with Pate Indoor Chicken, Turkey & Chicken, Ocean Fish & Tuna Canned Cat Food, 5.5-oz, case of 12",Blue Buffalo,$14.57,5.5,12.0,0.22075757575757576
+"Royal Canin Veterinary Diet Gastrointestinal Moderate Calorie Canned Cat Food, 3-oz can, case of 24",Royal Canin Veterinary Diet,$36.09,3.0,24.0,0.5012500000000001
+"Fancy Feast Creamy Delights Tuna Feast in a Creamy Sauce Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.20,3.0,24.0,0.18333333333333332
+"Whiskas Purrfectly Chicken Pouches Variety Pack Cat Food Pouches, 3-oz, case of 10",Whiskas,$5.74,3.0,10.0,0.19133333333333333
+"Tiny Tiger Chunks in EXTRA Gravy Seafood Recipes Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Fancy Feast Delights with Cheddar Grilled Tuna & Cheddar Cheese Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$11.59,3.0,24.0,0.1609722222222222
+"Fancy Feast Flaked Tuna Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Fancy Feast Classic Seafood Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Friskies Prime Filets with Chicken in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Friskies Extra Gravy Chunky With Chicken in Savory Gravy Canned Cat Food, 13.5-oz can, case of 12",Friskies,$11.04,3.5,12.0,0.26285714285714284
+"Weruva Cats in the Kitchen Cuties Variety Pack Grain-Free Canned Cat Food, 3.2-oz, case of 12",Weruva,$15.49,3.2,12.0,0.4033854166666666
+"Fancy Feast Medleys Wild Salmon Primavera Canned Cat Food, 3-oz, case of 24",Fancy Feast,$18.00,3.0,24.0,0.25
+"Fancy Feast Classic Tender Beef & Liver Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Fancy Feast Grilled Salmon & Shrimp Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.68,3.0,24.0,0.19
+"Fancy Feast Gravy Lovers Salmon & Sole Feast in Seared Salmon Flavor Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.19,3.0,24.0,0.19708333333333333
+"Purina Pro Plan Veterinary Diets DM Savory Selects Dietetic Management Formula Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan Veterinary Diets,$50.49,5.5,24.0,0.3825
+"Hill's Prescription Diet z/d Original Skin/Food Sensitivities Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$65.99,5.5,24.0,0.4999242424242424
+"Purina Pro Plan Prime Plus Adult 7+ Real Poultry & Beef Variety Pack Canned Cat Food, 3-oz can, case of 12",Purina Pro Plan,$11.49,3.0,12.0,0.31916666666666665
+"Instinct by Nature's Variety Original Grain-Free Real Chicken Recipe Natural Wet Canned Cat Food, 5.5-oz, case of 12",Instinct,$25.19,5.5,12.0,0.3816666666666667
+"Fancy Feast Gravy Lovers Beef Feast in Roasted Beef Flavor Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.83,3.0,24.0,0.19208333333333333
+"Friskies Surfin' & Turfin' Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 40",Friskies,$22.19,5.5,40.0,0.10086363636363636
+"Fancy Feast Purely Tender Tongol Tuna Wet Cat Food, 2-oz tray, case of 10",Fancy Feast,$8.69,2.0,10.0,0.4345
+"Fancy Feast Chunky Turkey Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.50,3.0,24.0,0.1736111111111111
+"Fancy Feast Purely Seabass & Shrimp Wet Cat Food, 2-oz tray, case of 10",Fancy Feast,$11.97,2.0,10.0,0.5985
+"Sheba Perfect Portions Grain-Free Multipack Poultry Entrees Cat Food Trays, 2.6-oz, case of 12 twin-packs",Sheba,$9.60,2.6,12.0,0.30769230769230765
+"Meow Mix Seafood Selections Variety Pack Cat Food Trays, 2.75-oz, case of 24",Meow Mix,$10.12,75.0,24.0,0.005622222222222222
+"Fancy Feast Grilled Salmon Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.96,3.0,24.0,0.18000000000000002
+"Friskies Savory Shreds with Ocean Whitefish & Tuna in Sauce Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.49,5.5,24.0,0.09462121212121212
+"Meow Mix Classic Favorites Variety Pack Cat Food Trays, 2.75-oz, case of 24",Meow Mix,$10.48,75.0,24.0,0.0058222222222222226
+"Tiki Cat King Kamehameha Grill Variety Pack Grain-Free Canned Cat Food, 2.8-oz, case of 12",Tiki Cat,$12.85,2.8,12.0,0.3824404761904762
+"Fancy Feast Kitten Tender Turkey Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.84,3.0,24.0,0.22
+"Wellness Healthy Indulgence Gravies Grain-Free Variety Pack Cat Food Pouches, 3-oz, case of 8",Wellness,$9.49,3.0,8.0,0.3954166666666667
+"Natural Balance L.I.D. Limited Ingredient Diets Duck & Green Pea Formula Grain-Free Canned Cat Food, 5.5-oz, case of 24",Natural Balance,$38.20,5.5,24.0,0.2893939393939394
+"Royal Canin Digest Sensitive Loaf in Sauce Canned Cat Food, 5.8-oz, case of 24",Royal Canin,$42.98,5.8,24.0,0.30876436781609196
+"Hill's Science Diet Adult Perfect Weight Roasted Vegetable & Chicken Medley Canned Cat Food, 2.9-oz, case of 24",Hill's Science Diet,$26.64,2.9,24.0,0.3827586206896552
+"Friskies Savory Shreds with Beef in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$16.49,5.5,24.0,0.12492424242424241
+"Hill's Science Diet Kitten Healthy Cuisine Roasted Chicken & Rice Medley Canned Cat Food, 2.8-oz, case of 24",Hill's Science Diet,$26.64,2.8,24.0,0.3964285714285715
+"Royal Canin Aging 12+ Thin Slices in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin,$36.50,3.0,24.0,0.5069444444444444
+"Purina Pro Plan Beef Entree with Carrots in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Blue Buffalo Healthy Gourmet Pate Chicken Entree Indoor Mature Canned Cat Food, 3-oz, case of 24",Blue Buffalo,$22.08,3.0,24.0,0.30666666666666664
+"Fancy Feast Elegant Medleys White Meat Chicken Tuscany Canned Cat Food, 3-oz, case of 24",Fancy Feast,$18.96,3.0,24.0,0.26333333333333336
+"American Journey Minced Chicken Recipe in Gravy Grain-Free Canned Cat Food, 3-oz, case of 24",American Journey,$22.99,3.0,24.0,0.3193055555555555
+"Wellness CORE Signature Selects Shredded Boneless Chicken & Beef Entree in Sauce Grain-Free Canned Cat Food, 5.3-oz, case of 12",Wellness,$31.80,5.3,12.0,0.5000000000000001
+"Fancy Feast Grilled Turkey & Giblets Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.19,3.0,24.0,0.19708333333333333
+"Purina Pro Plan Focus Kitten Classic Chicken & Liver Entree Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Fancy Feast Medleys Tender Turkey Primavera Canned Cat Food, 3-oz, case of 24",Fancy Feast,$18.00,3.0,24.0,0.25
+"Blue Buffalo Healthy Gourmet Pate Salmon Entree Indoor Adult Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$25.46,5.5,24.0,0.19287878787878787
+"Blue Buffalo Healthy Gourmet Pate Ocean Fish & Tuna Entree Adult Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$29.99,5.5,24.0,0.22719696969696968
+"Purina Pro Plan Classic Adult True Nature Ocean Whitefish & Salmon Entrée Grain-Free Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Meow Mix Poultry Selections Variety Pack Cat Food Trays, 2.75-oz, case of 24",Meow Mix,$10.48,75.0,24.0,0.0058222222222222226
+"Blue Buffalo Basics Limited Ingredient Grain-Free Indoor Duck & Potato Entree Adult Canned Cat Food, 3-oz, case of 24",Blue Buffalo,$27.59,3.0,24.0,0.38319444444444445
+"Royal Canin Feline Health Nutrition Loaf in Sauce Canned Kitten Food, 5.8-oz, case of 24",Royal Canin,$42.98,5.8,24.0,0.30876436781609196
+"Purina ONE Chicken Recipe Pate Grain-Free Canned Cat Food, 3-oz, case of 24",Purina ONE,$21.60,3.0,24.0,0.30000000000000004
+"Purina ONE Grain-Free Variety Pack Canned Cat Food, 3-oz, case of 24",Purina ONE,$21.29,3.0,24.0,0.2956944444444444
+"Tiki Cat Koolina Luau Chicken with Egg in Chicken Consomme Grain-Free Canned Cat Food, 6-oz, case of 8",Tiki Cat,$19.37,6.0,8.0,0.4035416666666667
+"Blue Buffalo Freedom Indoor Adult Fish Recipe Grain-Free Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$30.96,5.5,24.0,0.23454545454545456
+"Fancy Feast Gourmet Naturals White Meat Chicken Recipe in Gravy Canned Cat Food, 3-oz, case of 12",Fancy Feast,$10.20,3.0,12.0,0.2833333333333333
+"Wellness Minced Chicken Dinner Grain-Free Canned Cat Food, 5.5-oz, case of 24",Wellness,$45.11,5.5,24.0,0.34174242424242424
+"Purina Beyond Duck & Sweet Potato Pate Recipe Grain-Free Canned Cat Food, 3-oz, case of 12",Purina Beyond,$12.43,3.0,12.0,0.3452777777777778
+"Fancy Feast Flaked Tuna & Mackerel Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Royal Canin Adult Instinctive Loaf in Sauce Canned Cat Food, 5.8-oz, case of 24",Royal Canin,$42.98,5.8,24.0,0.30876436781609196
+"Blue Buffalo Healthy Gourmet Flaked Chicken Entree in Gravy Canned Cat Food, 5.5-oz, case of 24",Blue Buffalo,$27.95,5.5,24.0,0.21174242424242423
+"Weruva Cats in the Kitchen Goldie Lox and the 3 Fares Variety Pack Grain-Free Canned Cat Food, 6-oz, case of 24",Weruva,$44.99,6.0,24.0,0.31243055555555554
+"Friskies TurChicken Variety Pack Canned Cat Food, 5.5-oz, case of 40",Friskies,$23.25,5.5,40.0,0.10568181818181818
+"Nutro Kitten Soft Loaf Chicken Recipe Grain-Free Canned Cat Food, 3-oz, case of 24",Nutro,$28.56,3.0,24.0,0.39666666666666667
+"Hill's Science Diet Adult Tender Chicken Dinner Canned Cat Food, 5.5-oz, case of 24",Hill's Science Diet,$30.00,5.5,24.0,0.22727272727272727
+"Sheba Perfect Portions Grain-Free Signature Tuna Cuts in Gravy Entree Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Blue Buffalo Healthy Gourmet Variety Pack with Flaked Tuna, Fish & Shrimp, & Chicken Adult Cat Food Trays, 5.5-oz, case of 12",Blue Buffalo,$14.57,5.5,12.0,0.22075757575757576
+"Royal Canin Intense Beauty Thin Slices in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin,$36.50,3.0,24.0,0.5069444444444444
+"Instinct by Nature's Variety Limited Ingredient Diet Grain-Free Real Rabbit Recipe Canned Cat Food, 5.5-oz, case of 12",Instinct,$37.80,5.5,12.0,0.5727272727272726
+"American Journey Pate Poultry & Beef Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",American Journey,$22.99,3.0,24.0,0.3193055555555555
+"Hill's Science Diet Adult 7+  Savory Chicken Entree Canned Cat Food, 5.5-oz, case of 24",Hill's Science Diet,$30.00,5.5,24.0,0.22727272727272727
+"Meow Mix Pate Toppers Seafood & Poultry Variety Pack Cat Food Trays, 2.75-oz, case of 12",Meow Mix,$5.48,75.0,12.0,0.006088888888888889
+"Purina Pro Plan Focus Adult Urinary Tract Health Formula with Salmon Classic Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Friskies Prime Filets Chicken & Tuna Dinner in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Hill's Science Diet Adult Healthy Cuisine Roasted Chicken & Rice Medley Canned Cat Food, 2.8-oz, case of 24",Hill's Science Diet,$26.64,2.8,24.0,0.3964285714285715
+"Fancy Feast Grilled Turkey Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$17.28,3.0,24.0,0.24000000000000002
+"Iams Purrfect Delights Tuna-Topia Dinner Flaked in Sauce Canned Cat Food, 3-oz, case of 24",Iams,$14.16,3.0,24.0,0.19666666666666666
+"Rachael Ray Nutrish Chicken Lovers Variety Pack Natural Grain-Free Wet Cat Food, 2.8-oz, case of 12",Rachael Ray Nutrish,$10.43,2.8,12.0,0.31041666666666673
+"9 Lives Surf 'N Turf Favorites Variety Canned Cat Food, 5.5-oz, case of 24",9 Lives,$8.32,5.5,24.0,0.06303030303030303
+"BFF OMG Tuna & Duck Devour Me Dinner in Gravy Wet Cat Food Pouches, 3-oz, case of 12",BFF,$7.74,3.0,12.0,0.215
+"Tiki Cat After Dark Variety Pack Canned Cat Food, 2.8-oz, case of 12",Tiki Cat,$19.31,2.8,12.0,0.574702380952381
+"Friskies Savory Shreds Chicken & Salmon Dinner in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.29,5.5,24.0,0.10068181818181818
+"Wellness Complete Health Poultry Lovers Pate Variety Pack Grain-Free Canned Cat Food, 5.5-oz, case of 30",Wellness,$57.99,5.5,30.0,0.35145454545454546
+"Sheba Perfect Portions Garden Medleys Chicken, Beef & Vegetables Entree in Gravy Variety Pack Grain-Free Cat Food Trays, 2.6-oz, case of 12 twin-packs",Sheba,$9.60,2.6,12.0,0.30769230769230765
+"Tiny Tiger Pate Chicken Recipe Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Tiny Tiger Chunks in Gravy Beef & Poultry Recipes Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Friskies Savory Shreds with Salmon in Sauce Canned Cat Food, 5.5-oz, case of 24",Friskies,$16.99,5.5,24.0,0.1287121212121212
+"Fussie Cat Premium Tuna with Chicken Formula in Aspic Grain-Free Canned Cat Food, 2.82-oz, case of 24",Fussie Cat,$33.36,82.0,24.0,0.016951219512195123
+"Fancy Feast Delights with Cheddar Grilled Turkey & Cheddar Cheese Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.97,3.0,24.0,0.20791666666666667
+"Friskies Extra Gravy Chunky with Chicken in Savory Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$11.04,5.5,24.0,0.08363636363636363
+"Purina Pro Plan Focus Healthy Metabolism Formula Chicken Entrée in Gravy Adult Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Sheba Perfect Portions Grain-Free Multipack Seafood Entrees Cat Food Trays, 2.6-oz, case of 12 twin-packs",Sheba,$9.60,2.6,12.0,0.30769230769230765
+"Friskies Tasty Treasures with Chicken & Cheese in Gravy Canned Cat Food, 5.5-oz, case of 24",Friskies,$16.98,5.5,24.0,0.12863636363636363
+"Friskies Prime Filets with Ocean Whitefish & Tuna in Sauce Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Tiki Cat Velvet Mousse Variety Pack Grain-Free Wet Cat Food, 2.8-oz pouch, case of 12",Tiki Cat,$14.40,2.8,12.0,0.42857142857142866
+"Royal Canin Veterinary Diet Selected Protein Adult PD in Gel Canned Cat Food, 5.9-oz, case of 24",Royal Canin Veterinary Diet,$71.24,5.9,24.0,0.5031073446327683
+"Blue Buffalo Healthy Gourmet Kitten Multi Pack with Chicken Entrée Cat Food Trays, 3-oz, case of 6",Blue Buffalo,$4.89,3.0,6.0,0.27166666666666667
+"Friskies Indoor Classic Pate Salmon Dinner Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.54,5.5,24.0,0.09499999999999999
+"Fancy Feast Marinated Morsels Poultry & Beef Feast Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.02,3.0,24.0,0.1947222222222222
+"Purina Pro Plan Veterinary Diets NF Kidney Function Advanced Care Formula Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan Veterinary Diets,$47.99,5.5,24.0,0.3635606060606061
+"Instinct by Nature's Variety Limited Ingredient Diet Grain-Free Real Turkey Recipe Natural Wet Canned Cat Food, 5.5-oz, case of 12",Instinct,$27.00,5.5,12.0,0.4090909090909091
+"Purina Beyond Grain-Free Pate 4 Flavors Variety Pack Canned Cat Food, 3-oz, case of 24",Purina Beyond,$24.09,3.0,24.0,0.33458333333333334
+"Purina Pro Plan Veterinary Diets DM Dietetic Management Formula Canned Cat Food, 5.5-oz, case of 24",Purina Pro Plan Veterinary Diets,$50.49,5.5,24.0,0.3825
+"Friskies Classic Pate Chicken & Tuna Dinner Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Fancy Feast Classic Chopped Grill Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Tiny Tiger Chunks in EXTRA Gravy Beef & Poultry Recipes Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Purina Pro Plan Chicken & Turkey Favorites Variety Pack Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.49,3.0,24.0,0.32625
+"Fancy Feast Medleys White Meat Chicken Primavera Canned Cat Food, 3-oz, case of 24",Fancy Feast,$17.03,3.0,24.0,0.23652777777777778
+"BFF OMG Rainbow A Gogo Variety Pack Wet Cat Food Pouches, 3-oz, case of 12",BFF,$13.49,3.0,12.0,0.37472222222222223
+"Friskies Gravy Sensations Pouch Favorites Cat Food Pouches, 3-oz pouch, case of 24",Friskies,$11.58,3.0,24.0,0.16083333333333333
+"Friskies Classic Pate Liver & Chicken Dinner Canned Cat Food, 5.5-oz, case of 24",Friskies,$13.44,5.5,24.0,0.10181818181818181
+"Fancy Feast Medleys Shredded White Meat Chicken Fare Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.11,3.0,24.0,0.18208333333333332
+"American Journey Minced Poultry in Gravy Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",American Journey,$22.99,3.0,24.0,0.3193055555555555
+"Hill's Prescription Diet i/d Digestive Care Chicken & Vegetable Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$35.69,2.9,24.0,0.5127873563218391
+"Fancy Feast Medleys White Meat Chicken Florentine Canned Cat Food, 3-oz, case of 24",Fancy Feast,$18.00,3.0,24.0,0.25
+"Fancy Feast Gravy Lovers Salmon Feast in Seared Salmon Flavor Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.20,3.0,24.0,0.18333333333333332
+"Fancy Feast Medleys Shredded Fare Collection Pack Canned Cat Food, 3-oz, case of 12",Fancy Feast,$9.96,3.0,12.0,0.27666666666666667
+"Tiny Tiger Pate Seafood Recipes Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Fancy Feast Classic Tender Beef & Chicken Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.12,3.0,24.0,0.21
+"Hill's Prescription Diet i/d Digestive Care with Chicken Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$47.99,5.5,24.0,0.3635606060606061
+"Friskies Classic Pate Ocean Whitefish & Tuna Dinner Canned Cat Food, 13-oz, case of 12",Friskies,$12.00,13.0,12.0,0.07692307692307693
+"Fancy Feast Tender Feast Variety Pack Canned Kitten Food, 3-oz, case of 24",Fancy Feast,$16.79,3.0,24.0,0.23319444444444443
+"Blue Buffalo Wilderness Pate Variety Pack Duck, Chicken & Salmon Grain-Free Cat Canned Food, 3-oz, case of 12",Blue Buffalo,$14.99,3.0,12.0,0.4163888888888889
+"Purina Pro Plan Savor Adult White Meat Chicken & Vegetable Entree in Gravy Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$23.28,3.0,24.0,0.32333333333333336
+"Fancy Feast Purely Flaked Skipjack Tuna Wet Cat Food, 2-oz tray, case of 10",Fancy Feast,$10.38,2.0,10.0,0.519
+"Fancy Feast Creamy Delights Chicken Feast in a Creamy Sauce Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.20,3.0,24.0,0.18333333333333332
+"Friskies Classic Pate Mixed Grill Canned Cat Food, 13-oz, case of 12",Friskies,$13.51,13.0,12.0,0.0866025641025641
+"9 Lives Seafood & Poultry Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 24",9 Lives,$8.32,5.5,24.0,0.06303030303030303
+"Hill's Prescription Diet k/d Kidney Care with Chicken Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$49.99,5.5,24.0,0.3787121212121212
+"Fancy Feast Purely White Meat Chicken Wet Cat Food, 2-oz tray, case of 10",Fancy Feast,$8.54,2.0,10.0,0.42699999999999994
+"Wellness Complete Health Pate Chicken Entree Grain-Free Canned Cat Food, 12.5-oz, case of 12",Wellness,$37.56,2.5,12.0,1.252
+"Hill's Prescription Diet k/d Kidney Care Pate with Tuna Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$49.99,5.5,24.0,0.3787121212121212
+"Fancy Feast Gravy Lovers Chicken Hearts & Liver Feast in Grilled Chicken Flavor Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"9 Lives Gravy Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 12",9 Lives,$4.62,5.5,12.0,0.07
+"Fancy Feast Purely White Meat Chicken & Flaked Tuna Wet Cat Food, 2-oz tray, case of 10",Fancy Feast,$8.99,2.0,10.0,0.4495
+"Whiskas Tender Bites Favorite Selections Cat Food Pouches, 3-oz, case of 24",Whiskas,$9.39,3.0,24.0,0.13041666666666668
+"Purina Pro Plan Prime Plus Adult 7+ Seafood Variety Pack Canned Cat Food, 3-oz can, case of 12",Purina Pro Plan,$11.49,3.0,12.0,0.31916666666666665
+"Royal Canin Veterinary Diet Renal Support T Canned Cat Food, 3-oz, case of 24",Royal Canin Veterinary Diet,$37.99,3.0,24.0,0.5276388888888889
+"Hill's Prescription Diet c/d Multicare Urinary Care Vegetable, Tuna & Rice Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$35.69,2.9,24.0,0.5127873563218391
+"Fancy Feast Classic Turkey & Giblets Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.66,3.0,24.0,0.18972222222222224
+"Fancy Feast Medleys Florentine Collection Pack Canned Cat Food, 3-oz, case of 12",Fancy Feast,$9.96,3.0,12.0,0.27666666666666667
+"Hill's Prescription Diet c/d Multicare Urinary Care with Ocean Fish Canned Cat Food, 5.5-oz, case of 24",Hill's Prescription Diet,$48.99,5.5,24.0,0.37113636363636365
+"Fancy Feast Flaked Fish & Shrimp Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Fancy Feast Grilled Chicken Feast in Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$12.49,3.0,24.0,0.17347222222222222
+"Fancy Feast Classic Savory Salmon Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.84,3.0,24.0,0.22
+"Royal Canin Veterinary Diet Renal Support D Morsels in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin Veterinary Diet,$37.99,3.0,24.0,0.5276388888888889
+"Fancy Feast Medleys Tuscany Collection Pack Canned Cat Food, 3-oz, case of 12",Fancy Feast,$9.96,3.0,12.0,0.27666666666666667
+"Tiny Tiger Pate Beef & Poultry Recipes Variety Pack Grain-Free Canned Cat Food, 3-oz, case of 24",Tiny Tiger,$12.99,3.0,24.0,0.18041666666666667
+"Hill's Prescription Diet c/d Multicare Urinary Care Stress Chicken & Vegetable Stew Canned Cat Food, 2.9-oz, case of 24",Hill's Prescription Diet,$38.99,2.9,24.0,0.5602011494252874
+"Friskies Meaty Bits Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Fancy Feast Classic Ocean Whitefish & Tuna Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.12,3.0,24.0,0.21
+"Fancy Feast Grilled Poultry & Beef Feast Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.50,3.0,24.0,0.1875
+"Friskies Classic Pate Poultry Platter Canned Cat Food, 13-oz, case of 12",Friskies,$12.00,13.0,12.0,0.07692307692307693
+"Fancy Feast Creamy Delights Variety Pack Canned Cat Food, 3-oz, case of 24",Fancy Feast,$14.88,3.0,24.0,0.20666666666666667
+"Fancy Feast Gravy Lovers Turkey Feast in Roasted Turkey Flavor Gravy Canned Cat Food, 3-oz, case of 24",Fancy Feast,$13.20,3.0,24.0,0.18333333333333332
+"Friskies Chicken Lovers Variety Pack Canned Cat Food, 5.5-oz, case of 32",Friskies,$16.64,5.5,32.0,0.09454545454545454
+"Royal Canin Veterinary Diet Selected Protein Adult PR Canned Cat Food, 5.9-oz, case of 24",Royal Canin Veterinary Diet,$71.24,5.9,24.0,0.5031073446327683
+"Meow Mix Simple Servings Seafood Variety Pack Cat Food Trays, 1.3-oz, case of 24",Meow Mix,$8.97,1.3,24.0,0.2875
+"Fancy Feast Chunky Chicken Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Fancy Feast Tender Feast Kitten Variety Pack Canned Cat Food, 3-oz, case of 12",Fancy Feast,$7.56,3.0,12.0,0.21
+"Fancy Feast Medleys Tuna Recipe Variety Collection Pack Canned Cat Food, 3-oz, case of 12",Fancy Feast,$9.96,3.0,12.0,0.27666666666666667
+"Royal Canin Veterinary Diet Urinary SO Moderate Calorie Morsels in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin Veterinary Diet,$36.09,3.0,24.0,0.5012500000000001
+"9 Lives Pate Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 12",9 Lives,$4.29,5.5,12.0,0.065
+"Royal Canin Veterinary Diet Renal Support E Canned Cat Food, 5.8-oz, case of 24",Royal Canin Veterinary Diet,$49.39,5.8,24.0,0.35481321839080465
+"Sheba Perfect Portions Grain-Free Multipack Savory Chicken, Roasted Turkey & Tender Beef Pate Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Friskies Pate Seafood & Chicken Variety Pack Canned Cat Food, 5.5-oz, case of 40",Friskies,$20.48,5.5,40.0,0.0930909090909091
+"Fancy Feast Classic Pate Cod, Sole & Shrimp Feast Canned Cat Food, 3-oz, case of 24",Fancy Feast,$15.36,3.0,24.0,0.21333333333333332
+"Friskies Fish-A-Licious Variety Pack Canned Cat Food, 5.5-oz, case of 32",Friskies,$16.41,5.5,32.0,0.09323863636363637
+"Purina Pro Plan Seafood Favorites Variety Pack Canned Cat Food, 3-oz, case of 24",Purina Pro Plan,$21.36,3.0,24.0,0.29666666666666663
+"Sheba Perfect Portions Grain-Free Multipack Gourmet Salmon, Signature Tuna & Delicate Whitefish & Tuna Cuts in Gravy Cat Food Trays, 2.6-oz, case of 24 twin-packs",Sheba,$19.20,2.6,24.0,0.30769230769230765
+"Friskies Prime Filets Meaty Favorites Variety Pack Canned Cat Food, 5.5-oz, case of 24",Friskies,$12.72,5.5,24.0,0.09636363636363637
+"Meow Mix Tender Favorites Poultry & Beef Cat Food Trays Variety Pack, 2.75-oz, case of 24",Meow Mix,$10.48,75.0,24.0,0.0058222222222222226
+"Royal Canin Feline Health Nutrition Adult Instinctive Thin Slices in Gravy Canned Cat Food, 3-oz, case of 24",Royal Canin,$36.50,3.0,24.0,0.5069444444444444
+"Nutro Max Adult Chicken Supreme Entree Chunks in Sauce Canned Cat Food, 3-oz, case of 24",Nutro Max,$19.20,3.0,24.0,0.26666666666666666
