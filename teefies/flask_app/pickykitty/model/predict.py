@@ -12,27 +12,20 @@ label_encoder = pickle.load(
 model = Doc2Vec.load('./pickykitty/model/catfood-d2v.model')
 urls = pickle.load( open('./pickykitty/model/links.pkl','rb') )
 
-def get_similar_items(positives = [], negatives = [], num_results = 5):
+def get_similar_items(positive = [], negative = [], num_results = 5):
 	""" Returns most similar items computed from pretrained model """
 
-	# print(positives[0])
-	# pos_in = [label_encoder[x] for x in positives]
-	# neg_in = [label_encoder[x] for x in negatives]
-
-	product_in = str(positives)
-	pos_in = label_encoder[product_in]
-	print(pos_in)
+	try:
+		positive = [label_encoder.get(r) for r in positive]
+		negative = [label_encoder.get(r) for r in negative]
+	except KeyError:
+		print('One of your inputs was not recognized')
 
 
-	similar_items = model.docvecs.most_similar(positive = pos_in,
-											   negative = [],
+	similar_items = model.docvecs.most_similar(positive = positive,
+											   negative = negative,
 											   topn = num_results)
 
-	# print(similar_items)
-	# print( [label for (label,similarity) in similar_items])
-
-	# print( label_encoder )
-	# print( label_decoder )
 	decoded_items = [label_decoder[label] for (label,similarity) in similar_items]
 
 	columns = ['product','link']

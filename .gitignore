@@ -1,3 +1,6 @@
 teefies/scraping/html_pages/
 geckodriver.log
 teefies/data/html_pages/
+teefies/flask_app/pickykitty/model/catfood-d2v.model
+teefies/flask_app/pickykitty/model/*.pkl
+*.pyc
