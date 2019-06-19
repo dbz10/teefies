@@ -4,9 +4,10 @@ import os
 import time
 import pickle
 import glob
+import string
 
 
-basedir = '/Users/danielben-zion/Dropbox/insight/teefies/scraping'
+basedir = '/Users/danielben-zion/Dropbox/insight/teefies/data'
 
 
 def setOptions():
@@ -30,6 +31,7 @@ def ensure_dir(file_path):
 pages = range(1,10)
 succeed_counter = 0
 fail_counter = 0
+variety_counter = 0
 options = setOptions()
 
 all_links = pickle.load( open('links.pkl','rb') )
@@ -38,12 +40,13 @@ print(len(all_links))
 with webdriver.Firefox(options=options) as driver:
     for (product_id, product_main_link) in all_links.items():
         try:
+            name = product_id.translate(str.maketrans('', '', string.punctuation))
             
-            name = product_id.split(',')[0].replace(' ','-').lower()
+            name = name.replace(' ','-').lower()
             filepath = os.path.join(basedir,f'html_pages/individual-items/{name}/')
     #             print(filepath)
 
-            ensure_dir(filepath)
+            
 
             
 
@@ -55,11 +58,19 @@ with webdriver.Firefox(options=options) as driver:
                 
             driver.get(str(product_main_link))
             time.sleep(2)
+            main_page_soup = BeautifulSoup(driver.page_source,'html')
+
+            if 'Variety' in main_page_soup.find('div', {'id' : 'attributes'}).text:
+                variety_counter +=1
+                continue
+
+
+            ensure_dir(filepath)
             
             with open(filepathname,'w') as file:
                 file.write(driver.page_source)
 
-            main_page_soup = BeautifulSoup(driver.page_source,'html')
+            
             review_url_init = main_page_soup.find('a',{'class' : 'cw-btn cw-btn--default',
               'href': True})['href']
 
@@ -81,9 +92,11 @@ with webdriver.Firefox(options=options) as driver:
                     file.write(driver.page_source)
 
 
+
+
             succeed_counter+=1   
         except:
             fail_counter +=1
             continue
 
-print(f'Succeeded: {succeed_counter}, Failed: {fail_counter}')
+print(f'Succeeded: {succeed_counter}, Failed: {fail_counter}, Variety Packs Skipped: {variety_counter}')
