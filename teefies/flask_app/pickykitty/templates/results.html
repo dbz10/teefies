@@ -24,12 +24,28 @@
         <p class="lead"> The crystal ball suggests...</p>
       </div>
 
-      <table class="table table-hover">
-      <tr><th>Food</th><th>Buy it</th></tr>
-      {% for item in output %}
-      <tr><td>{{ item['name'] }}</td><td> <a href="{{ item['url'] }}">Take me there!</a> </td></tr>
+      <table class="table table-hover" style="width:100%" id = 'results_table'>
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Food</th> 
+            <th scope="col">Price </th>
+            <th scope="col">Buy it</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for item in output %}
+        <tr>
+          <th scope="row"> {{ loop.index }} </th>
+          <td>{{ item['name'] }}</td>
+          <td class = "price">{{item['price']}}</td> 
+          <td><a href="{{ item['url'] }}" target="_blank">Take me there!</a> </td>
+        </tr>
+        </tbody>
       {% endfor %}
       </table>
+
+      
 
 
      </div><!-- /.container -->
@@ -46,10 +62,42 @@
     </div>
   </div>
 
-
+      {% for item in output %}
+        <div class="mytooltip" id='tooltip-{{loop.index}}'> Price per oz: {{item['price_per_oz']}} </div>
+      {% endfor %}
 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
       <script src="../static/js/bootstrap.min.js"></script>
+
+      <script>
+        const table = document.getElementById('results_table')
+        const rows = table.querySelectorAll("td.price")
+        const tooltips = document.querySelectorAll('.mytooltip')
+        console.log(tooltips)
+
+        rows.forEach( (row,i) => {
+          row.addEventListener('mouseover',function(e){
+            const tip = document.getElementById(`tooltip-${i+1}`)
+            console.log(tip)
+
+            const { top, left } = this.getBoundingClientRect()
+
+            tip.style.display = 'inline-block'
+            tip.style.left = (Number(left)+50)+'px'
+            tip.style.top = (Number(top)-20)+'px'
+
+
+          })
+
+          row.addEventListener('mouseout',function(e){
+            const tip = document.getElementById(`tooltip-${i+1}`)
+            tip.style.display = 'none'
+          })
+
+        })
+
+
+      </script>
 
 
 
@@ -62,8 +110,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="static/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
+
 
 {% endblock %}

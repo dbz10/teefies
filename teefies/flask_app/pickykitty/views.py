@@ -42,9 +42,10 @@ def selection_results():
 	if not disliked:
 		disliked = 'nothing'
 
-	print([item for item in products.values()])
-
-	check_items_valid(products.values())
+	try:
+		check_items_valid(products.values())
+	except KeyError:
+		return render_template("keyerr.html")
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
 
@@ -58,13 +59,22 @@ def selection_results():
 	
 
 	result_data = pd.read_sql_query(query,con)
+
+	print(result_data['product'])
+
 	output = []
 	for item in similar_items:
+		# let just nicely format the price per oz
 		row = result_data.loc[result_data['product']==item]
-		output.append(dict(name=row['product'],
-						   price=row['price'],
-						   num_cans=row['num_cans'],
-						   url=row['url']))
+		print(row['price_per_oz'])
+		price_per_oz = '$ %0.2f' % row['price_per_oz']
+
+
+		output.append(dict(name=row['product'].values[0],
+						   price=row['price'].values[0],
+						   num_cans=row['num_cans'].values[0],
+						   price_per_oz=price_per_oz,
+						   url=row['url'].values[0]))
 
 
 
