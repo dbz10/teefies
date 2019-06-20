@@ -12,6 +12,8 @@ label_encoder = pickle.load(
 model = Doc2Vec.load('./pickykitty/model/catfood-d2v.model')
 urls = pickle.load( open('./pickykitty/model/links.pkl','rb') )
 
+
+
 def get_similar_items(positive = [], negative = [], num_results = 5):
 	""" Returns most similar items computed from pretrained model """
 
@@ -27,11 +29,7 @@ def get_similar_items(positive = [], negative = [], num_results = 5):
 
 	decoded_items = [label_decoder[label] for (label,similarity) in similar_items]
 
-	columns = ['product','link']
-
-	result = [ pd.DataFrame(data = {'product': [item] , 'link': [urls[item]]}) for item in decoded_items]
-
-	return result
+	return decoded_items
 
 
 

@@ -6,10 +6,11 @@ import pandas as pd
 import psycopg2
 
 from .model.predict import get_similar_items
+from .model.misc import check_items_valid
 
 user = 'danielben-zion'
 host = 'localhost'
-dbname = 'birth_db'
+dbname = 'catfood_db'
 db = create_engine(f'postgres://{user}{host}/{dbname}')
 con = None
 con = psycopg2.connect(database = dbname, user = user)
@@ -41,7 +42,20 @@ def selection_results():
 	if not disliked:
 		disliked = 'nothing'
 
+	check_items_valid(products.values())
+
 	similar_items = get_similar_items(positive = positive, negative = negative)
+
+	# let's pretend as if we're doing some SQL
+
+	# query = f""" SELECT product AS name, price, oz_per_can AS size, price_per_oz, link AS url
+	#			  FROM product_info_table
+	#			  WHERE product in {similar_items} """
+	#
+
+	# result_data = pd.read_sql_query(query,con)
+
+
 	return render_template("results.html", liked=liked, disliked = disliked, similar_items=similar_items)
 
 

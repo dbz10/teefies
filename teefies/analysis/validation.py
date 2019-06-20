@@ -110,8 +110,8 @@ bigram = Phraser(phrases)
 trigram_phrases = Phrases(bigram[all_tokens])
 trigram = Phraser(phrases)
 
-# df_clean['input'] = df_clean['tokens'].apply(lambda x: bigram[x.split(' ')])
-df_clean['input'] = df_clean['tokens'].apply(lambda x: x.split(' '))
+df_clean['input'] = df_clean['tokens'].apply(lambda x: bigram[x.split(' ')])
+# df_clean['input'] = df_clean['tokens'].apply(lambda x: x.split(' '))
 
 
 
@@ -232,7 +232,7 @@ for (trialno,parm) in tqdm(enumerate(parms)):
 	                    dodge=False,linewidth=2.5,orient='h',data=val,ax = axes[2])
 	c.invert_yaxis()
 
-	plt.savefig(f'plots/sim-box-bigrams-{trialno}.png')
+	plt.savefig(f'plots/round1/sim-box-bigrams-{trialno}.png')
 
 	plt.close('all')
 
