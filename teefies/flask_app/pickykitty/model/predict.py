@@ -15,11 +15,10 @@ urls = pickle.load( open('./pickykitty/model/links.pkl','rb') )
 def get_similar_items(positive = [], negative = [], num_results = 5):
 	""" Returns most similar items computed from pretrained model """
 
-	try:
-		positive = [label_encoder[r] for r in positive]
-		negative = [label_encoder[r] for r in negative]
-	except KeyError:
-		print('One of your inputs was not recognized')
+
+	positive = [label_encoder[r] for r in positive]
+	negative = [label_encoder[r] for r in negative]
+
 
 
 	similar_items = model.docvecs.most_similar(positive = positive,

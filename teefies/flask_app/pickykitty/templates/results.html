@@ -39,25 +39,7 @@
     </nav>
 <br><br>
 
-    <div class="container">
-    <div class="starter-template">
-        <h2>It worked!</h2>
-        <p>Search for another food:</p>
-    </div>
-
-    <div class = "container">
-
-        <form action="/results" method="GET">
-          <div class="form-group">
-            <label for='product_name'>Food:</label>
-            <input type='text' id='product_name' name ='product_name'>
-          </div>
-          <div>
-            <button type='submit' class='btn btn-dark btn=lg'>Find foods like this!</button>
-          </div>
-
-        </form>
-      </div>
+    
 
    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="../static/js/bootstrap.min.js"></script>
@@ -81,7 +63,25 @@
 
      </div><!-- /.container -->
 
+     <div class="container">
+    <div class="starter-template">
 
+        <h2>Search for another food:</h2>
+    </div>
+
+    <div class = "container">
+
+        <form action="/results" method="GET">
+          <div class="form-group">
+            <label for='product_name'>Food:</label>
+            <input type='text' id='product_name' name ='product_name'>
+          </div>
+          <div>
+            <button type='submit' class='btn btn-dark btn=lg'>Find foods like this!</button>
+          </div>
+
+        </form>
+      </div>
 
       <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
       <script src="../static/js/bootstrap.min.js"></script>
