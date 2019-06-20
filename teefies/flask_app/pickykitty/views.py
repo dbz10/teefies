@@ -22,6 +22,28 @@ def index():
 		title = 'Home',
 		user = user)
 
+@app.route('/results')
+def selection_results():
+	products = request.args
+
+	positive = [products.get(f'pos_{i}') for i in range(3) if products.get(f'pos_{i}')]
+	negative = [products.get(f'neg_{i}') for i in range(3) if products.get(f'neg_{i}')]
+
+	
+
+
+	liked = ', '.join(positive)
+	disliked = ', '.join(negative)
+
+	if not liked:
+		liked = 'nothing'
+
+	if not disliked:
+		disliked = 'nothing'
+
+	similar_items = get_similar_items(positive = positive, negative = negative)
+	return render_template("results.html", liked=liked, disliked = disliked, similar_items=similar_items)
+
 
 
 # @app.route('/db')
@@ -51,31 +73,11 @@ def index():
 #         births.append(dict(index=query_results.iloc[i]['index'], attendant=query_results.iloc[i]['attendant'], birth_month=query_results.iloc[i]['birth_month']))
 #     return render_template('cesareans.html',births=births)
 
-@app.route('/input')
-def cesareans_input():
-	return render_template("input.html")
-
-@app.route('/results')
-def selection_results():
-	products = request.args
-
-	positive = [products.get(f'pos_{i}') for i in range(3) if products.get(f'pos_{i}')]
-	negative = [products.get(f'neg_{i}') for i in range(3) if products.get(f'neg_{i}')]
-
-	
+# @app.route('/input')
+# def cesareans_input():
+# 	return render_template("input.html")
 
 
-	liked = ', '.join(positive)
-	disliked = ', '.join(negative)
-
-	if not liked:
-		liked = 'nothing'
-
-	if not disliked:
-		disliked = 'nothing'
-
-	similar_items = get_similar_items(positive = positive, negative = negative)
-	return render_template("results.html", liked=liked, disliked = disliked, similar_items=similar_items)
 
 # @app.route('/output')
 # def cesareans_output():
