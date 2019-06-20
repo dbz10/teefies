@@ -42,21 +42,35 @@ def selection_results():
 	if not disliked:
 		disliked = 'nothing'
 
+	print([item for item in products.values()])
+
 	check_items_valid(products.values())
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
 
+	print(similar_items)
+
 	# let's pretend as if we're doing some SQL
 
-	# query = f""" SELECT product AS name, price, oz_per_can AS size, price_per_oz, link AS url
-	#			  FROM product_info_table
-	#			  WHERE product in {similar_items} """
-	#
+	query = f""" SELECT product, price, num_cans, price_per_oz, url
+				  FROM product_info_table
+				  WHERE product in {similar_items} """
+	
 
-	# result_data = pd.read_sql_query(query,con)
+	result_data = pd.read_sql_query(query,con)
+	output = []
+	for item in similar_items:
+		row = result_data.loc[result_data['product']==item]
+		output.append(dict(name=row['product'],
+						   price=row['price'],
+						   num_cans=row['num_cans'],
+						   url=row['url']))
 
 
-	return render_template("results.html", liked=liked, disliked = disliked, similar_items=similar_items)
+
+
+
+	return render_template("results.html", liked=liked, disliked = disliked, output = output)
 
 
 

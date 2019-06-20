@@ -26,8 +26,8 @@
 
       <table class="table table-hover">
       <tr><th>Food</th><th>Buy it</th></tr>
-      {% for item in similar_items %}
-      <tr><td>{{ item['product'].values[0] }}</td><td> <a href="{{ item['link'].values[0] }}">Take me there!</a> </td></tr>
+      {% for item in output %}
+      <tr><td>{{ item['name'] }}</td><td> <a href="{{ item['url'] }}">Take me there!</a> </td></tr>
       {% endfor %}
       </table>
 

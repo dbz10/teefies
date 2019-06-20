@@ -9,8 +9,8 @@ label_decoder = pickle.load(
 label_encoder = pickle.load( 
 	open('./pickykitty/model/label-encoder.pkl','rb') )
 
-model = Doc2Vec.load('./pickykitty/model/catfood-d2v.model')
-urls = pickle.load( open('./pickykitty/model/links.pkl','rb') )
+model = Doc2Vec.load('./pickykitty/model/catfood-d2v-dbow.model')
+# urls = pickle.load( open('./pickykitty/model/links.pkl','rb') )
 
 
 
@@ -29,7 +29,8 @@ def get_similar_items(positive = [], negative = [], num_results = 5):
 
 	decoded_items = [label_decoder[label] for (label,similarity) in similar_items]
 
-	return decoded_items
+
+	return tuple(decoded_items)
 
 
 

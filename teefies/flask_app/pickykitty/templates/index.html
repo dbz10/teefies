@@ -21,7 +21,7 @@
 </div>
 
 <div class="form-group text-center">
-  <form action="/results" method="GET">
+  <form action="/results" method="GET" autocomplete="off">
     
 
        <h3>  Yum! </h3>
@@ -79,7 +79,7 @@
 <script src="{{ url_for('static', filename='data/foods.js') }}"></script>
 
 <script> 
-	const foodlist = JSON.parse(foods).map(f=> f.name)
+	const foodlist = foods.map(f=> f.name)
 	const idlist = ['product_name_1', 'product_name_2',
 	'product_name_3','product_name_4','product_name_5',
 	'product_name_6']
