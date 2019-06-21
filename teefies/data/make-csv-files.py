@@ -28,6 +28,7 @@ def make_reviews_csv():
             
 
             name=' '.join(product_name.split(',')[:-2])
+            name = name.replace("'",'\u2019')
             
             product_dir = product_name.translate(str.maketrans('', '', string.punctuation))
             product_dir = product_dir.replace(' ','-').lower()
@@ -39,7 +40,7 @@ def make_reviews_csv():
 
                     # print(reviewpage)
 
-                    review_soup = BeautifulSoup(open(reviewpage,'r'),'html')
+                    review_soup = BeautifulSoup(open(reviewpage,'r'),features="lxml")
 
                     for review in review_soup.find_all("li", {'itemprop': 'review'}):
                         rating = review.find('meta',{'itemprop':'ratingValue'})['content']
@@ -60,7 +61,7 @@ def make_reviews_csv():
 def make_product_csv():
     name_list_to_json = []
     # Product Info CSV file
-    columns = ['product','brand', 'price','oz_per_can','num_cans','price_per_oz','ingredients']
+    columns = ['product','brand', 'price','oz_per_can','num_cans','price_per_oz','ingredients','url']
     with open('/Users/danielben-zion/Dropbox/insight/teefies/data/CatfoodProductInfo.csv','w') as catfoodcsv:
         writer = csv.writer(catfoodcsv)
         writer.writerow(columns)
@@ -70,6 +71,7 @@ def make_product_csv():
         for (product_name, product_link) in all_links.items():
 
             name=' '.join(product_name.split(',')[:-2])
+            name = name.replace("'",'\u2019')
             
             product_dir = product_name.translate(str.maketrans('', '', string.punctuation))
             product_dir = product_dir.replace(' ','-').lower()
@@ -90,16 +92,18 @@ def make_product_csv():
 
             
             try:
-                oz_per_can = float(re.search('(\d.?\d?)-oz',product_name).group(1))
-                num_cans = float(re.search('case of (\d+)',product_name).group(1))
+                oz_per_can = float(re.search('(\d.?\d?\d?)-oz',product_name).group(1))
+                num_cans = float(re.search(' of (\d+)',product_name).group(1))
                 ppo = float(price[1:])/(oz_per_can*num_cans)
             except: 
+                print(f'Failed to get ppo info for {name}')
                 continue
             
 
             name_list_to_json.append(dict(name=name))
 
             brand = main_page_soup.find('span',{'itemprop' : 'brand'}).text
+            brand = brand.replace("'",'\u2019')
 
             ingredients_block = main_page_soup.find('span', {'class': "cw-type__h2 Ingredients-title"})
             ingredients = ingredients_block.next_element.next_element.next_element.text.strip().split(',')
@@ -113,7 +117,7 @@ def make_product_csv():
     #         print(f'price: {price}')
             
 
-            row = [name,brand,price,oz_per_can,num_cans,ppo,ingredients]
+            row = [name,brand,price,oz_per_can,num_cans,ppo,ingredients,product_link]
             writer.writerow(row)
             counter += 1
 

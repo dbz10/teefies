@@ -5,4 +5,5 @@ teefies/flask_app/pickykitty/model/catfood-d2v.model
 teefies/flask_app/pickykitty/model/*.pkl
 *.pyc
 teefies/analysis/plots/
-.pyc
+teefies/flask_app/pickykitty/model/*.model
+teefies/analysis/saved_models/

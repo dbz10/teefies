@@ -49,8 +49,6 @@ def selection_results():
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
 
-	print(similar_items)
-
 	# let's pretend as if we're doing some SQL
 
 	query = f""" SELECT product, price, num_cans, price_per_oz, url
@@ -60,13 +58,11 @@ def selection_results():
 
 	result_data = pd.read_sql_query(query,con)
 
-	print(result_data['product'])
 
 	output = []
 	for item in similar_items:
 		# let just nicely format the price per oz
 		row = result_data.loc[result_data['product']==item]
-		print(row['price_per_oz'])
 		price_per_oz = '$ %0.2f' % row['price_per_oz']
 
 

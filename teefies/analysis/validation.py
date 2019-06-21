@@ -19,6 +19,8 @@ from gensim.models.phrases import Phraser
 import numpy as np
 import itertools
 import json
+from sklearn.linear_model import LogisticRegression
+import csv
 
 # Parameters for "grid search"
 vector_sizes = [100,150,200,250,300]
@@ -136,6 +138,41 @@ label_decoder = df[['product_label','product']].set_index('product_label').to_di
 label_encoder = df[['product_label','product']].set_index('product').to_dict()['product_label']
 
 
+def make_val_boxplots(val):
+    
+    fig,axes = plt.subplots(nrows=1,ncols=3,figsize=(12,4))
+    a = sns.boxplot(x='sim_score_dm',y='rating',
+                        dodge=False,linewidth=2.5,orient='h',data=val,ax = axes[0])
+    a.invert_yaxis()
+    b = sns.boxplot(x='sim_score_db',y='rating',
+                        dodge=False,linewidth=2.5,orient='h',data=val,ax = axes[1])
+    b.invert_yaxis()
+    c = sns.boxplot(x='avg_sim',y='rating',
+                        dodge=False,linewidth=2.5,orient='h',data=val,ax = axes[2])
+    c.invert_yaxis()
+
+
+def get_threshold(val,feature_field):
+	""" Gets the threshold value of similarity for which
+	the probability for class = good is >= 75% """
+	lr = LogisticRegression(random_state=40,class_weight='balanced')
+	X = lrdf[feature_field].values
+	y = lrdf["class"].values
+
+	lr.fit(X.reshape(-1,1),y)
+
+	sim_vals = np.arange(-1,1,0.01)
+	probs = lr.predict_proba(sim_vals.reshape(-1,1))[:,0]
+	threshold = sim_vals[np.argwhere(probs>0.25).max()]
+
+	return threshold
+
+
+
+columns = ['param set', 'threshold_dbow','threshold_dm','threshold_avg']
+with open('validation_metrics.csv','w') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(columns)
 
 
 for (trialno,parm) in tqdm(enumerate(parms)):
@@ -145,19 +182,26 @@ for (trialno,parm) in tqdm(enumerate(parms)):
 	window = parm['window']
 	epochs = parm['epochs']
 
-	model_dbow = Doc2Vec(dm=0, vector_size=vector_size, window=window, negative=5, hs=0, min_count=2,
-	 					sample = 0, workers=cores, alpha=alpha, min_alpha=0.001)
-	model_dm = Doc2Vec(dm=1, vector_size=vector_size, window=window, negative=5, hs=0, min_count=2, sample=0,
-	                   workers=cores, alpha=alpha, min_alpha = 0.001)
+	try:
+		model_dbow = Doc2Vec.load(f'saved_models/catfood-d2v-dbow-{trialno}.model')
+		model_dm = Doc2Vec.load(f'saved_models/catfood-d2v-dm-{trialno}.model')
+	except:
+		model_dbow = Doc2Vec(dm=0, vector_size=vector_size, window=window, negative=5, hs=0, min_count=2,
+		 					sample = 0, workers=cores, alpha=alpha, min_alpha=0.001)
+		model_dm = Doc2Vec(dm=1, vector_size=vector_size, window=window, negative=5, hs=0, min_count=2, 
+			sample=0, workers=cores, alpha=alpha, min_alpha = 0.001)
 
 
-	model_dbow.build_vocab(data_tagged.values)
-	model_dm.build_vocab(data_tagged.values)
+		model_dbow.build_vocab(data_tagged.values)
+		model_dm.build_vocab(data_tagged.values)
 
-	train_data = utils.shuffle(data_tagged)
+		train_data = utils.shuffle(data_tagged)
 
-	model_dbow.train(train_data, total_examples=len(train_data), epochs=epochs)
-	model_dm.train(train_data, total_examples=len(train_data), epochs=epochs)
+		model_dbow.train(train_data, total_examples=len(train_data), epochs=epochs)
+		model_dm.train(train_data, total_examples=len(train_data), epochs=epochs)
+
+		model_dbow.save(f'saved_models/catfood-d2v-dbow-{trialno}.model')
+		model_dm.save(f'saved_models/catfood-d2v-dm-{trialno}.model')
 
 	author_count = df.groupby('review_author')['review_author'].count()
 	authorgroup = author_count[(author_count > 5) & (author_count < 15)]
@@ -211,29 +255,25 @@ for (trialno,parm) in tqdm(enumerate(parms)):
 	    val = tmp.join(combined_results,how='left')
 	    val.dropna(how='any',axis=0,inplace=True)
 	    
-	#     val['rating'] = val['rating'] - val['rating'].mean()
 	    
 	    return val
 
 	val = pd.concat([generate_val_data(user) for user in authorgroup.index],axis=0)
 
-	fig,axes = plt.subplots(nrows=1,ncols=3,figsize=(12,4))
-
-
-	a = sns.boxplot(x='sim_score_dm',y='rating',
-	                    dodge=False,linewidth=2.5,orient='h',data=val,ax = axes[0])
-	a.invert_yaxis()
-
-	b = sns.boxplot(x='sim_score_db',y='rating',
-	                    dodge=False,linewidth=2.5,orient='h',data=val,ax = axes[1])
-	b.invert_yaxis()
-
-	c = sns.boxplot(x='avg_sim',y='rating',
-	                    dodge=False,linewidth=2.5,orient='h',data=val,ax = axes[2])
-	c.invert_yaxis()
-
-	plt.savefig(f'plots/round1/sim-box-bigrams-{trialno}.png')
-
+	make_val_boxplots(val)
+	plt.savefig(f'plots/round1/sim-box-bigrams-dropped_short_reviews-{trialno}.png')
 	plt.close('all')
+
+	lrdf = val.copy()
+	lrdf['class'] = lrdf['rating'].apply(lambda x: 1 if x > 3 else 0)
+
+	val_metrics = [get_threshold(val,field) for field in ['sim_score_db','sim_score_dm','avg_sim']]
+	val_metrics.insert(0,trialno)
+
+	with open('validation_metrics.csv','a+') as csvfile:
+		writer = csv.writer(csvfile)
+		writer.writerow(val_metrics)
+
+
 
 print('Complete.')
