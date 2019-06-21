@@ -35,7 +35,6 @@ def selection_results():
 	negative = [products.get(f'neg_{i}') for i in range(3) if products.get(f'neg_{i}')]
 
 	allergen_checkboxes = request.form.getlist('allergen_checkbox')
-	print(allergen_checkboxes)
 
 
 	liked = ', '.join(positive)
@@ -52,16 +51,19 @@ def selection_results():
 	except KeyError:
 		return render_template("keyerr.html")
 
-	allergens = filter_allergens(products.values())
-	print(allergens)
+	if negative:
+		allergens = filter_allergens(negative)
+	else:
+		allergens = []
+
 	# adding support for checkbox remember state
 	allergen_data = [(allergen,'checked' if allergen in allergen_checkboxes else []) for allergen in allergens]
-	print(allergen_data)
 
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
 
 	# let's pretend as if we're doing some SQL
+
 
 	query = f""" SELECT product, price, num_cans, price_per_oz, url, ingredients
 				  FROM product_info_table

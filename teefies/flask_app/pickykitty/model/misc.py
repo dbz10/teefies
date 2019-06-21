@@ -27,12 +27,20 @@ def filter_allergens(input):
 	allergens_counter = pd.DataFrame.from_dict({item: 0 for item in common_allergens},
 												orient='index',columns=['count'])
 
+	print(input)
 
-	items = tuple([item for item in input if item])
-	query = f""" SELECT product, ingredients
-				FROM product_info_table
-				WHERE product in {items}
-	"""
+	if len(input) > 1:
+		items = tuple(input)
+		query = f""" SELECT product, ingredients
+					FROM product_info_table
+					WHERE product in {items}
+		"""
+	else:
+		query = f""" SELECT product, ingredients
+					FROM product_info_table
+					WHERE product = '{input[0]}'
+		"""
+
 	query_results = pd.read_sql_query(query,con)
 
 	for index,row in query_results.iterrows():
