@@ -45,7 +45,7 @@
       {% endfor %}
       </table>
 
-      {% if allergens %}
+      {% if allergen_data %}
       <div class="container">
         <div class="starter-template">
           Based on the info you gave us, it seems like your cat may dislike some of the following ingredients. Would you like to filter out foods containing any of them?
@@ -53,13 +53,14 @@
       </div>
       <div class='container'>
         <form method='POST'>
-        {% for allergen in allergens%}
+        {% for allergen, checkval in allergen_data %}
         <span> 
           <!-- {{allergen}}  -->
           <div class="custom-control custom-checkbox custom-control-inline">
             <input type="checkbox" class="custom-control-input custom-control-inline" 
-            id="customCheck{{loop.index}}" name='allergen_checkbox' value='{{allergen}}'>
-            <label class="custom-control-label" for="customCheck{{loop.index}}"> {{allergen}} </label>
+            id="customCheck{{loop.index}}" name='allergen_checkbox' value='{{ allergen }}'
+            {{checkval}}>
+            <label class="custom-control-label" for="customCheck{{loop.index}}"> {{ allergen }} </label>
           </div>
 
         <!--   <input type="checkbox" class="custom-control-input" name='allergen_checkbox' value='{{allergen}}' > </span> -->

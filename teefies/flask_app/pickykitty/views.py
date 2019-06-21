@@ -54,6 +54,10 @@ def selection_results():
 
 	allergens = filter_allergens(products.values())
 	print(allergens)
+	# adding support for checkbox remember state
+	allergen_data = [(allergen,'checked' if allergen in allergen_checkboxes else []) for allergen in allergens]
+	print(allergen_data)
+
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
 
@@ -98,7 +102,8 @@ def selection_results():
 
 
 	testallergens = ['Chicken','Fish']
-	return render_template("results.html", liked=liked, disliked = disliked, output = output, allergens= allergens )
+	return render_template("results.html", liked=liked, disliked = disliked, output = output, 
+		allergen_data = allergen_data )
 
 
 
