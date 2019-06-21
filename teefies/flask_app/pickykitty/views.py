@@ -34,8 +34,8 @@ def selection_results():
 	positive = [products.get(f'pos_{i}') for i in range(3) if products.get(f'pos_{i}')]
 	negative = [products.get(f'neg_{i}') for i in range(3) if products.get(f'neg_{i}')]
 
-	checkboxes = request.form.getlist('allergen_checkbox')
-	# print(checkboxes)
+	allergen_checkboxes = request.form.getlist('allergen_checkbox')
+	print(allergen_checkboxes)
 
 
 	liked = ', '.join(positive)
@@ -52,13 +52,14 @@ def selection_results():
 	except KeyError:
 		return render_template("keyerr.html")
 
-	filter_allergens(products.values())
+	allergens = filter_allergens(products.values())
+	print(allergens)
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
 
 	# let's pretend as if we're doing some SQL
 
-	query = f""" SELECT product, price, num_cans, price_per_oz, url
+	query = f""" SELECT product, price, num_cans, price_per_oz, url, ingredients
 				  FROM product_info_table
 				  WHERE product in {similar_items} """
 	
@@ -67,23 +68,37 @@ def selection_results():
 
 
 	output = []
+	recs_count = 0
 	for item in similar_items:
-		# let just nicely format the price per oz
 		row = result_data.loc[result_data['product']==item]
-		price_per_oz = '$ %0.2f' % row['price_per_oz']
+		
+		checkallergens = any([allergen in row['ingredients'].values[0].lower() for allergen in allergen_checkboxes])
 
 
-		output.append(dict(name=row['product'].values[0],
-						   price=row['price'].values[0],
-						   num_cans=row['num_cans'].values[0],
-						   price_per_oz=price_per_oz,
-						   url=row['url'].values[0]))
+
+		if checkallergens:
+			continue
+		else:
+			# let just nicely format the price per oz
+			price_per_oz = '$ %0.2f' % row['price_per_oz']
+
+
+			output.append(dict(name=row['product'].values[0],
+							   price=row['price'].values[0],
+							   num_cans=row['num_cans'].values[0],
+							   price_per_oz=price_per_oz,
+							   url=row['url'].values[0]))
+
+			recs_count += 1
+
+		if recs_count > 4:
+			break 
 
 
 
 
 	testallergens = ['Chicken','Fish']
-	return render_template("results.html", liked=liked, disliked = disliked, output = output, allergens= [] )
+	return render_template("results.html", liked=liked, disliked = disliked, output = output, allergens= allergens )
 
 
 

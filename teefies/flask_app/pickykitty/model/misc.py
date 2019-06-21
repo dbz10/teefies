@@ -39,12 +39,9 @@ def filter_allergens(input):
 		for allergen in common_allergens:
 			allergens_counter.loc[allergen] += (allergen in row['ingredients'].lower())
 
-
-
-
-	# for id in example_ids:
-	#     for allergen in common_allergens:
-	#         allergens_counter[allergen] += (allergen in product_info.iloc[id]['ingredients'].lower())
-
 	
-	pass
+	potential_positives = allergens_counter.loc[allergens_counter['count']>2].index.values
+
+	print(allergens_counter)
+
+	return potential_positives

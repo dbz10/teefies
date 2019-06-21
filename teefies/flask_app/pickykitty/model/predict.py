@@ -23,7 +23,7 @@ def into_ranked_dataframe(similar_from_docvec):
 	    return tmp[['name','rank']].set_index('name')
 
 def generate_rankings(positive=[],negative=[]):
-	    num_returned = 100
+	    num_returned = 300
 	    
 	    
 	    similar_items_dbow = model_dbow.docvecs.most_similar(positive=positive,negative = negative,topn=num_returned)
@@ -56,7 +56,7 @@ def get_similar_items(positive = [], negative = [], num_results = 5):
 
 	similar_items_frame = generate_rankings(positive=positives,negative=negatives)
 
-	decoded_items = [row[0] for row in similar_items_frame.head(5).iterrows()]
+	decoded_items = [row[0] for row in similar_items_frame.head(100).iterrows()]
 
 
 	return tuple(decoded_items)

@@ -46,6 +46,11 @@
       </table>
 
       {% if allergens %}
+      <div class="container">
+        <div class="starter-template">
+          Based on the info you gave us, it seems like your cat may dislike some of the following ingredients. Would you like to filter out foods containing any of them?
+        </div>
+      </div>
       <div class='container'>
         <form method='POST'>
         {% for allergen in allergens%}
@@ -53,8 +58,7 @@
           <!-- {{allergen}}  -->
           <div class="custom-control custom-checkbox custom-control-inline">
             <input type="checkbox" class="custom-control-input custom-control-inline" 
-            id="customCheck{{loop.index}}" name='allergen_checkbox' value='{{allergen}}'
-            >
+            id="customCheck{{loop.index}}" name='allergen_checkbox' value='{{allergen}}'>
             <label class="custom-control-label" for="customCheck{{loop.index}}"> {{allergen}} </label>
           </div>
 
