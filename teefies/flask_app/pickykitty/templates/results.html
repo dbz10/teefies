@@ -45,14 +45,32 @@
       {% endfor %}
       </table>
 
-      
+      {% if allergens %}
+      <div class='container'>
+        <form method='POST'>
+        {% for allergen in allergens%}
+        <span> 
+          <!-- {{allergen}}  -->
+          <div class="custom-control custom-checkbox custom-control-inline">
+            <input type="checkbox" class="custom-control-input custom-control-inline" 
+            id="customCheck{{loop.index}}" name='allergen_checkbox' value='{{allergen}}'
+            >
+            <label class="custom-control-label" for="customCheck{{loop.index}}"> {{allergen}} </label>
+          </div>
+
+        <!--   <input type="checkbox" class="custom-control-input" name='allergen_checkbox' value='{{allergen}}' > </span> -->
+        {% endfor %}
+        <button type="submit" class = 'btn btn-primary'> Filter </button>
+      </form>
+      </div>
+      {% endif %}
 
 
      </div><!-- /.container -->
 
      <br><br>
      <div class="container">
-    <div class="starter-template">
+      <div class="starter-template">
 
 
         <h2>Try again with a different set of foods</h2>

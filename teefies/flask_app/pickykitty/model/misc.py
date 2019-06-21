@@ -1,5 +1,7 @@
 import pickle
 from gensim.models.doc2vec import Doc2Vec
+from pickykitty.views import con
+import pandas as pd
 
 # /pickykitty/model/
 label_decoder = pickle.load( 
@@ -8,9 +10,41 @@ label_decoder = pickle.load(
 label_encoder = pickle.load( 
 	open('./pickykitty/model/label-encoder.pkl','rb') )
 
-model = Doc2Vec.load('./pickykitty/model/catfood-d2v-dbow.model')
+# model = Doc2Vec.load('./pickykitty/model/catfood-d2v-dbow.model')
 
 
 def check_items_valid(input):
 	[label_encoder[item] for item in input if item]
+	pass
+
+
+
+def filter_allergens(input):
+
+	common_allergens = ['chicken','beef','pork','turkey','corn','seafood',
+                    'wheat gluten','soy','dairy','by-products']
+
+	allergens_counter = pd.DataFrame.from_dict({item: 0 for item in common_allergens},
+												orient='index',columns=['count'])
+
+
+	items = tuple([item for item in input if item])
+	query = f""" SELECT product, ingredients
+				FROM product_info_table
+				WHERE product in {items}
+	"""
+	query_results = pd.read_sql_query(query,con)
+
+	for index,row in query_results.iterrows():
+		for allergen in common_allergens:
+			allergens_counter.loc[allergen] += (allergen in row['ingredients'].lower())
+
+
+
+
+	# for id in example_ids:
+	#     for allergen in common_allergens:
+	#         allergens_counter[allergen] += (allergen in product_info.iloc[id]['ingredients'].lower())
+
+	
 	pass

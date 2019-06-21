@@ -5,15 +5,18 @@ from sqlalchemy_utils import database_exists, create_database
 import pandas as pd
 import psycopg2
 
-from .model.predict import get_similar_items
-from .model.misc import check_items_valid
-
 user = 'danielben-zion'
 host = 'localhost'
 dbname = 'catfood_db'
 db = create_engine(f'postgres://{user}{host}/{dbname}')
 con = None
 con = psycopg2.connect(database = dbname, user = user)
+
+
+from .model.predict import get_similar_items
+from .model.misc import check_items_valid, filter_allergens
+
+
 
 @app.route('/')
 @app.route('/index')
@@ -23,14 +26,16 @@ def index():
 		title = 'Home',
 		user = user)
 
-@app.route('/results')
+@app.route('/results', methods = ['GET','POST'])
 def selection_results():
+
 	products = request.args
 
 	positive = [products.get(f'pos_{i}') for i in range(3) if products.get(f'pos_{i}')]
 	negative = [products.get(f'neg_{i}') for i in range(3) if products.get(f'neg_{i}')]
 
-	
+	checkboxes = request.form.getlist('allergen_checkbox')
+	# print(checkboxes)
 
 
 	liked = ', '.join(positive)
@@ -46,6 +51,8 @@ def selection_results():
 		check_items_valid(products.values())
 	except KeyError:
 		return render_template("keyerr.html")
+
+	filter_allergens(products.values())
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
 
@@ -75,8 +82,8 @@ def selection_results():
 
 
 
-
-	return render_template("results.html", liked=liked, disliked = disliked, output = output)
+	testallergens = ['Chicken','Fish']
+	return render_template("results.html", liked=liked, disliked = disliked, output = output, allergens= [] )
 
 
 
