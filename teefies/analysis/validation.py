@@ -17,10 +17,14 @@ from nltk.tokenize import RegexpTokenizer
 from gensim.models.phrases import Phrases
 from gensim.models.phrases import Phraser
 import numpy as np
+from scipy import interp
 import itertools
 import json
 from sklearn.linear_model import LogisticRegression
 import csv
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import recall_score, precision_score, f1_score, roc_curve, roc_auc_score, accuracy_score
+
 
 # Parameters for "grid search"
 vector_sizes = [100,150,200,250,300]
@@ -37,44 +41,6 @@ with open( 'parms.txt','w') as pl:
 		pl.write(json.dumps(parm))
 		pl.write("\n")
 
-
-
-
-# Load in the data and display some basic info
-product_info = pd.read_csv('../data/CatfoodProductInfo.csv')
-reviews = pd.read_csv('../data/CatfoodReviewsInfo.csv')
-df = reviews.join(product_info.set_index('product'), on='product',how='left')
-df = df.dropna(axis=0,how='any')
-
-ninit = len(set(df['product']))
-print(f'Prior to filtering out products with less than 50 reviews, there are {ninit} products')
-
-filter = df.groupby('product')['rating'].count() >= 50
-df = df[filter[df['product']].values]
-
-nfin = len(set(df['product']))
-print(f'After filtering out products with less than 50 reviews, there are {nfin} products')
-
-prod_info_filter = [product in set(df['product']) for product in product_info['product']]
-product_info = product_info[prod_info_filter]
-
-# Drop variety packs that somehow made it through
-print(f'Before removing straggler variety packs: {len(df)}')
-exclude_words = ['Variety',]
-for word in exclude_words:
-    df = df[~df['product'].str.contains(word)]
-    product_info = product_info[~product_info['product'].str.contains(word)]
-    
-print(f'After removing straggler variety packs: {len(df)}')
-
-brandnames = set(df['brand'].unique())
-print(f'There are {len(brandnames)} brands represented across our reviews.')
-
-nprods = len(df.groupby('product'))
-nrevs = len(df)
-print(f'After all of that, there are {nrevs} reviews across {nprods} products')
-
-
 # standardize text
 def standardize_text(df, text_field):
     df[text_field] = df[text_field].str.replace(r"http\S+", "")
@@ -89,55 +55,6 @@ def standardize_text(df, text_field):
         
     return df
 
-# Label encode the names
-le = preprocessing.LabelEncoder()
-df['product_label']=le.fit_transform(df['product'])
-
-
-df_clean = standardize_text(df,'review_text')
-
-# Tokenize and remove stop words.
-
-tokenizer = RegexpTokenizer(r'\w+')
-stop_words = set(stopwords.words('english'))
-df_clean["tokens"] = df_clean["review_text"].apply(tokenizer.tokenize)
-
-df_clean['tokens'] = df_clean['tokens'].apply(lambda x: ' '.join( [item for item in x if item not in stop_words]))
-# df_clean['tokens'] = df_clean['tokens'].apply(lambda x: [item for item in x if item not in stop_words])
-
-
-all_tokens = [t.split() for t in df_clean['tokens']]
-phrases = Phrases(all_tokens)
-bigram = Phraser(phrases)
-trigram_phrases = Phrases(bigram[all_tokens])
-trigram = Phraser(phrases)
-
-df_clean['input'] = df_clean['tokens'].apply(lambda x: bigram[x.split(' ')])
-# df_clean['input'] = df_clean['tokens'].apply(lambda x: x.split(' '))
-
-
-
-# train, test = train_test_split(df[['review_text','product_label']],test_size=0.0)
-
-data = df_clean[['input','product_label']]
-
-
-
-data['n_words'] = data['input'].apply(lambda r: len(r))
-print(f'Number of reviews prior to dropping short ones {len(data)}')
-data = data.loc[data['n_words']>=10]
-print(f'Number of reviews after dropping short ones {len(data)}')
-# data.head(5)
-
-data_tagged = data.apply(
-    lambda r: TaggedDocument(words=r['input'], tags=[r.product_label]), axis=1)
-
-cores = multiprocessing.cpu_count()
-
-label_decoder = df[['product_label','product']].set_index('product_label').to_dict()['product']
-label_encoder = df[['product_label','product']].set_index('product').to_dict()['product_label']
-
-
 def make_val_boxplots(val):
     
     fig,axes = plt.subplots(nrows=1,ncols=3,figsize=(12,4))
@@ -151,6 +68,18 @@ def make_val_boxplots(val):
                         dodge=False,linewidth=2.5,orient='h',data=val,ax = axes[2])
     c.invert_yaxis()
 
+def make_val_boxplot_avg_sim_only(val):
+	fig = plt.figure(figsize=(8,6))
+	plt.rcParams.update({'font.size': 16})
+
+	a = sns.boxplot(x='avg_sim',y='rating',
+		dodge=False,linewidth=2.5,orient='h',data=val)
+
+	plt.xlabel('Average Similarity')
+	plt.ylabel('Individual User Rating on Product')
+	plt.title('Similarity Based Recommendations')
+
+	a.invert_yaxis()
 
 def get_threshold(val,feature_field):
 	""" Gets the threshold value of similarity for which
@@ -167,6 +96,259 @@ def get_threshold(val,feature_field):
 
 	return threshold
 
+class lr_wrapper(object):
+	""" A wrapper for LinearRegression() that packages 
+	several commonly-performed tasks """
+
+	def __init__(self,df,test_split=0.5,feature_columns,y_column):
+		self.clf = LogisticRegression(solver='lbfgs',class_weight='balanced')
+		self.df = df
+		self.feature_columns = feature_columns
+		self.y_column = y_column
+		self.test_split = test_split
+
+	def fit_and_return_probas(self):
+		X = self.df[self.feature_columns]
+		y = self.df[self.y_columns]
+		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split)
+
+		self.clf.fit(X_train,y_train,stratify = y)
+		y_probas = self.clf.predict_proba(X_test)[:,1]
+
+		return y_probas
+
+	def fit_and_return_preds(self):
+		X = self.df[self.feature_columns]
+		y = self.df[self.y_columns]
+		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split)
+
+		self.clf.fit(X_train,y_train,stratify = y)
+		y_preds = self.clf.predict(X_test)
+
+		return y_preds
+
+
+
+
+def get_rocauc(val,num_iterations):
+	""" Trains a logistic regression and calculates the roc auc 
+	for classifying products as >=4 stars """
+
+	recalls = np.zeros(num_iterations)
+	precisions = np.zeros(num_iterations)
+	f1s = np.zeros(num_iterations)
+	roc_aucs = np.zeros(num_iterations)
+
+
+	X = val[['sim_score_db','sim_score_dm']]
+	y = val['class']
+
+	for z in range(num_iterations):
+		X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.5, stratify = y)
+
+		lr = LogisticRegression(solver='lbfgs',class_weight='balanced')
+		lr.fit(X_train,y_train)
+
+		y_preds = lr.predict(X_test)
+		y_probas = lr.predict_proba(X_test)[:,1]
+
+		recalls[z] = recall_score(y_test,y_preds)
+		precisions[z] = precision_score(y_test,y_preds)
+		f1s[z] = f1_score(y_test,y_preds)
+		roc_aucs[z] = roc_auc_score(y_test, y_probas)
+
+
+	# print(roc_aucs)
+	return np.mean(recalls),np.mean(precisions),np.mean(f1s),np.mean(roc_aucs)
+
+def make_roc_curve_data(val,num_iterations):
+	roc_aucs = np.zeros(num_iterations)
+	tprs = []
+	base_fpr = np.linspace(0, 1, 101)
+
+	X = val[['sim_score_db','sim_score_dm']]
+	y = val['class']
+
+	for z in range(num_iterations):
+		X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.5, stratify = y)
+
+		# sns.scatterplot(x='sim_score_db',y='sim_score_dm',hue=y_train.values,data=X_train)
+		# plt.show()
+
+		# print(y_train.value_counts())
+		# print(y_test.value_counts())
+
+		lr = LogisticRegression(solver='lbfgs',class_weight='balanced')
+		lr.fit(X_train,y_train)
+
+		y_preds = lr.predict(X_test)
+		y_probas = lr.predict_proba(X_test)[:,1]
+
+		roc_aucs[z] = roc_auc_score(y_test, y_probas)
+
+		fpr, tpr, _ = roc_curve(y_test, y_probas)
+
+
+		tpr = interp(base_fpr, fpr, tpr)
+		tpr[0] = 0.0
+		tprs.append(tpr)
+
+	# print(roc_aucs)
+	return np.mean(roc_aucs), tprs
+
+def make_roc_curve_confidence(val,num_iterations):
+	# from https://stats.stackexchange.com/questions/186337/average-roc-for-repeated-10-fold-cross-validation-with-probability-estimates/187003
+
+	roc_auc, tprs = make_roc_curve_data(val,num_iterations)
+
+	tprs = np.array(tprs)
+	base_fpr = np.linspace(0, 1, 101)
+	mean_tprs = tprs.mean(axis=0)
+	std = tprs.std(axis=0)
+
+	tprs_upper = np.minimum(mean_tprs + std, 1)
+	tprs_lower = mean_tprs - std
+
+
+	plt.plot(base_fpr, mean_tprs, 'b')
+	plt.fill_between(base_fpr, tprs_lower, tprs_upper, color='grey', alpha=0.3)
+
+	plt.plot([0, 1], [0, 1],'r--')
+	plt.xlim([0, 1])
+	plt.ylim([0, 1])
+	plt.ylabel('True Positive Rate')
+	plt.xlabel('False Positive Rate')
+	# plt.axes().set_aspect('equal', 'datalim')
+	plt.title('ROC AUC: %.2f' % roc_auc)
+	plt.show()
+
+def make_baseline_curve(df):
+	X = df['rating_mean']
+	y = df['class']
+
+	X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.5, stratify = y)
+
+	lr = LogisticRegression(solver='lbfgs',class_weight='balanced')
+	lr.fit(X_train,y_train)
+
+	y_preds = lr.predict(X_test)
+	y_probas = lr.predict_proba(X_test)[:,1]
+
+
+	
+
+
+
+
+try: 
+	data = pd.read_csv('prepared_data.csv')
+except:
+	# Load in the data and display some basic info
+	product_info = pd.read_csv('../data/CatfoodProductInfo.csv')
+	reviews = pd.read_csv('../data/CatfoodReviewsInfo.csv')
+	df = reviews.join(product_info.set_index('product'), on='product',how='left')
+	df = df.dropna(axis=0,how='any')
+
+	ninit = len(set(df['product']))
+	print(f'Prior to filtering out products with less than 50 reviews, there are {ninit} products')
+
+	filter = df.groupby('product')['rating'].count() >= 50
+	df = df[filter[df['product']].values]
+
+	nfin = len(set(df['product']))
+	print(f'After filtering out products with less than 50 reviews, there are {nfin} products')
+
+	prod_info_filter = [product in set(df['product']) for product in product_info['product']]
+	product_info = product_info[prod_info_filter]
+
+	# Drop variety packs that somehow made it through
+	print(f'Before removing straggler variety packs: {len(df)}')
+	exclude_words = ['Variety',]
+	for word in exclude_words:
+	    df = df[~df['product'].str.contains(word)]
+	    product_info = product_info[~product_info['product'].str.contains(word)]
+	    
+	print(f'After removing straggler variety packs: {len(df)}')
+
+	brandnames = set(df['brand'].unique())
+	print(f'There are {len(brandnames)} brands represented across our reviews.')
+
+	nprods = len(df.groupby('product'))
+	nrevs = len(df)
+	print(f'After all of that, there are {nrevs} reviews across {nprods} products')
+
+
+
+
+	# Label encode the names
+	le = preprocessing.LabelEncoder()
+	df['product_label']=le.fit_transform(df['product'])
+
+
+	df_clean = standardize_text(df,'review_text')
+
+	# Tokenize and remove stop words.
+
+	tokenizer = RegexpTokenizer(r'\w+')
+	stop_words = set(stopwords.words('english'))
+	df_clean["tokens"] = df_clean["review_text"].apply(tokenizer.tokenize)
+
+	df_clean['tokens'] = df_clean['tokens'].apply(lambda x: ' '.join( [item for item in x if item not in stop_words]))
+	# df_clean['tokens'] = df_clean['tokens'].apply(lambda x: [item for item in x if item not in stop_words])
+
+
+	all_tokens = [t.split() for t in df_clean['tokens']]
+	phrases = Phrases(all_tokens)
+	bigram = Phraser(phrases)
+	trigram_phrases = Phrases(bigram[all_tokens])
+	trigram = Phraser(phrases)
+
+	df_clean['input'] = df_clean['tokens'].apply(lambda x: bigram[x.split(' ')])
+	# df_clean['input'] = df_clean['tokens'].apply(lambda x: x.split(' '))
+
+
+
+	# train, test = train_test_split(df[['review_text','product_label']],test_size=0.0)
+
+	data = df_clean.copy()
+
+
+
+	data['n_words'] = data['input'].apply(lambda r: len(r))
+	print(f'Number of reviews prior to dropping short ones {len(data)}')
+	data = data.loc[data['n_words']>=10]
+	print(f'Number of reviews after dropping short ones {len(data)}')
+	# data.head(5)
+
+	data.to_csv('prepared_data.csv')
+
+
+data_tagged = data.apply(
+    lambda r: TaggedDocument(words=r['input'], tags=[r.product_label]), axis=1)
+
+cores = multiprocessing.cpu_count()
+
+label_decoder = data[['product_label','product']].set_index('product_label').to_dict()['product']
+label_encoder = data[['product_label','product']].set_index('product').to_dict()['product_label']
+
+author_count = data.groupby('review_author')['review_author'].count()
+authorgroup = author_count[(author_count > 5) & (author_count < 20)]
+
+mean_product_ratings = data[['product','rating']].groupby('product').mean()
+
+def generate_baseline_for_validation(user):
+	num_returned = 1000
+	userdata = data[data['review_author']==user]
+
+	tmp = userdata[['product','rating']].set_index('product')
+
+	val = tmp.join(mean_product_ratings,how='left',rsuffix='_mean')
+
+	return val
+
+validation_baseline = pd.concat([generate_baseline_for_validation(user) for user in authorgroup.index],axis=0)
+
+
 
 
 columns = ['param set', 'threshold_dbow','threshold_dm','threshold_avg']
@@ -174,22 +356,28 @@ with open('validation_metrics.csv','w') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(columns)
 
+AUC_RESULTS = np.zeros((len(parms),len(parms)))
+PRECISION_RESULTS = np.zeros((len(parms),len(parms)))
+F1_RESULTS = np.zeros((len(parms),len(parms)))
+RECALL_RESULTS = np.zeros((len(parms),len(parms)))
 
-for (trialno,parm) in tqdm(enumerate(parms)):
+for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
-	vector_size = parm['vector_size']
-	alpha = parm['alpha']
-	window = parm['window']
-	epochs = parm['epochs']
+
+	parms_no_dbow = p1[0]
+	parms_dbow = p1[1]
+	parms_no_dm = p2[0]
+	parms_dm = p2[1]
 
 	try:
-		model_dbow = Doc2Vec.load(f'saved_models/catfood-d2v-dbow-{trialno}.model')
-		model_dm = Doc2Vec.load(f'saved_models/catfood-d2v-dm-{trialno}.model')
+		model_dbow = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+		model_dm = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+		# print('Successfuly loaded models')
 	except:
-		model_dbow = Doc2Vec(dm=0, vector_size=vector_size, window=window, negative=5, hs=0, min_count=2,
-		 					sample = 0, workers=cores, alpha=alpha, min_alpha=0.001)
-		model_dm = Doc2Vec(dm=1, vector_size=vector_size, window=window, negative=5, hs=0, min_count=2, 
-			sample=0, workers=cores, alpha=alpha, min_alpha = 0.001)
+		model_dbow = Doc2Vec(dm=0, negative=5, hs=0, min_count=2,
+		 					sample = 0,  min_alpha=0.001 **parms_dbow)
+		model_dm = Doc2Vec(dm=1,  negative=5, hs=0, min_count=2, 
+			sample=0,  min_alpha = 0.001, **parms_dm)
 
 
 		model_dbow.build_vocab(data_tagged.values)
@@ -203,8 +391,7 @@ for (trialno,parm) in tqdm(enumerate(parms)):
 		model_dbow.save(f'saved_models/catfood-d2v-dbow-{trialno}.model')
 		model_dm.save(f'saved_models/catfood-d2v-dm-{trialno}.model')
 
-	author_count = df.groupby('review_author')['review_author'].count()
-	authorgroup = author_count[(author_count > 5) & (author_count < 15)]
+	
 
 
 	def scale_scores(df,field):
@@ -214,7 +401,7 @@ for (trialno,parm) in tqdm(enumerate(parms)):
 
 	def generate_val_data(user):
 	    num_returned = 1000
-	    userdata = df[df['review_author']==user]
+	    userdata = data[data['review_author']==user]
 	    
 	    if len(userdata.groupby('rating').count()) == 1:
 	        return
@@ -260,20 +447,64 @@ for (trialno,parm) in tqdm(enumerate(parms)):
 
 	val = pd.concat([generate_val_data(user) for user in authorgroup.index],axis=0)
 
-	make_val_boxplots(val)
-	plt.savefig(f'plots/round1/sim-box-bigrams-dropped_short_reviews-{trialno}.png')
-	plt.close('all')
+	# make_val_boxplots(val)
+	# plt.savefig(f'plots/round1/sim-box-bigrams-dropped_short_reviews-{trialno}.png')
+	# plt.close('all')
 
-	lrdf = val.copy()
-	lrdf['class'] = lrdf['rating'].apply(lambda x: 1 if x > 3 else 0)
+	# make_val_boxplot_avg_sim_only(val)
+	# plt.savefig('plots/VAL_FOR_PRESENTATION.png',bbox_inches='tight')
 
-	val_metrics = [get_threshold(val,field) for field in ['sim_score_db','sim_score_dm','avg_sim']]
-	val_metrics.insert(0,trialno)
 
-	with open('validation_metrics.csv','a+') as csvfile:
-		writer = csv.writer(csvfile)
-		writer.writerow(val_metrics)
 
+	val['class'] = val['rating'].apply(lambda x: 0 if x > 3 else 1)
+
+	recall,precision,f1,roc_auc = get_rocauc(val,50)
+
+	
+
+	break
+	# ,fpr,tpr,thresholds
+
+	AUC_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
+	RECALL_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
+	PRECISION_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
+	F1_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
+
+	# print(f'Recall: {recall}, Precision: {precision}, F1: {f1}, ROC AUC: {roc_auc}')
+
+	# Plotting ROC curve
+	# plt.figure(figsize=(8, 8))
+	# plt.plot(fpr, tpr, lw=2)
+	# plt.plot([0, 1], [0, 1], 'k--')
+	# plt.title('ROC (AUC=%0.3f)' % roc_auc)
+	# plt.xlabel('FPR')
+	# plt.ylabel('TPR')
+	# plt.show()
+
+
+	# val_metrics = [get_threshold(val,field) for field in ['sim_score_db','sim_score_dm','avg_sim']]
+	# val_metrics.insert(0,trialno)
+
+	# with open('validation_metrics.csv','a+') as csvfile:
+	# 	writer = csv.writer(csvfile)
+	# 	writer.writerow(val_metrics)
+	# np.save('validation_results/auc_results.npy',AUC_RESULTS)
+	# np.save('validation_results/f1_results.npy',F1_RESULTS)
+	# np.save('validation_results/recall_results.npy',RECALL_RESULTS)
+	# np.save('validation_results/precision_results.npy',PRECISION_RESULTS)
+
+
+
+# def find_max(array):
+# 	result = np.where(array == np.amax(array))
+# 	listOfCordinates = list(zip(result[0], result[1]))
+# 	return listOfCordinates
+
+# arrlist = [AUC_RESULTS,F1_RESULTS,RECALL_RESULTS,PRECISION_RESULTS]
+# for name,result_array in zip(['auc','f1','recall','precision'],arrlist ):
+# 	max_inds = find_max(result_array)
+# 	print(f'Max value of {name} are at indices {max_inds}')
+	
 
 
 print('Complete.')
