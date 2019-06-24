@@ -2,6 +2,36 @@
 
 {% block head %}
 {{ super() }}
+      <style>
+      /*.custom-control-label:before{
+          background-color:red;
+        }
+        .custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+          background-color:black;
+        }*/
+        .btn.btn-warning.active,
+        .btn.btn-warning:active {
+          color: #fff;
+          background-color: red !important;
+          border-color: #5cb85c;
+          outline: none;
+        }
+        .btn.btn-warning.active.focus,
+        .btn.btn-warning.active:focus,
+        .btn.btn-warning:active.focus,
+        .btn.btn-warning:active:focus,{
+          color: #fff;
+          background-color: red;
+          border-color: #5cb85c;
+          outline: none;
+          box-shadow: none;
+        }
+
+        .btn-space{
+          margin-right : 5px !important;
+        }
+        </style>
+
 {% endblock %}
 
 {% block title %} PickyKitty {% endblock %}
@@ -51,27 +81,39 @@
           Based on the info you gave us, it seems like your cat may dislike some of the following ingredients. Would you like to filter out foods containing any of them?
         </div>
       </div>
+      <form method='POST'>
       <div class='container'>
-        <form method='POST'>
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      
+        
+          
         {% for allergen, checkval in allergen_data %}
-        <span> 
-          <!-- {{allergen}}  -->
-          <div class="custom-control custom-checkbox custom-control-inline">
-            <input type="checkbox" class="custom-control-input custom-control-inline" 
-            id="customCheck{{loop.index}}" name='allergen_checkbox' value='{{ allergen }}'
-            {{checkval}}>
-            <label class="custom-control-label" for="customCheck{{loop.index}}"> {{ allergen }} </label>
-          </div>
 
-        <!--   <input type="checkbox" class="custom-control-input" name='allergen_checkbox' value='{{allergen}}' > </span> -->
+            {% if checkval %}
+              <label class="btn btn-warning btn-space active">
+            {% else %}
+              <label class="btn btn-warning btn-space">
+            {% endif %}
+              <input type="checkbox" name="allergen_checkbox" value='{{ allergen }}'
+              }
+            {{checkval}}> {{allergen}}
+            </label>
+         
+
         {% endfor %}
+          </div>
         <button type="submit" class = 'btn btn-primary'> Filter </button>
       </form>
       </div>
       {% endif %}
 
 
-     </div><!-- /.container -->
+     </div>
+
+
+
+
+
 
      <br><br>
      <div class="container">
@@ -121,7 +163,6 @@
 
 
       </script>
-
 
 
      </div><!-- /.container -->

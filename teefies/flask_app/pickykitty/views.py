@@ -58,6 +58,7 @@ def selection_results():
 
 	# adding support for checkbox remember state
 	allergen_data = [(allergen,'checked' if allergen in allergen_checkboxes else []) for allergen in allergens]
+	print(allergen_data)
 
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
