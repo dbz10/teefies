@@ -100,7 +100,7 @@ class lr_wrapper(object):
 	""" A wrapper for LinearRegression() that packages 
 	several commonly-performed tasks """
 
-	def __init__(self,df,test_split=0.5,feature_columns,y_column):
+	def __init__(self,df,test_split=0.5,feature_columns=[],y_column=[]):
 		self.clf = LogisticRegression(solver='lbfgs',class_weight='balanced')
 		self.df = df
 		self.feature_columns = feature_columns
@@ -108,24 +108,28 @@ class lr_wrapper(object):
 		self.test_split = test_split
 
 	def fit_and_return_probas(self):
+		""" Performs train_test_split, fits linear regression, predicts probabilities,
+		and returns y_test, y_probas"""
 		X = self.df[self.feature_columns]
-		y = self.df[self.y_columns]
-		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split)
+		y = self.df[self.y_column]
+		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split,stratify = y)
 
-		self.clf.fit(X_train,y_train,stratify = y)
+		self.clf.fit(X_train,y_train)
 		y_probas = self.clf.predict_proba(X_test)[:,1]
 
-		return y_probas
+		return y_test,y_probas
 
 	def fit_and_return_preds(self):
+		""" Performs train_test_split, fits linear regression, predicts,
+		and returns y_test, y_preds"""
 		X = self.df[self.feature_columns]
-		y = self.df[self.y_columns]
-		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split)
+		y = self.df[self.y_column]
+		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split,stratify = y)
 
-		self.clf.fit(X_train,y_train,stratify = y)
+		self.clf.fit(X_train,y_train)
 		y_preds = self.clf.predict(X_test)
 
-		return y_preds
+		return y_test,y_preds
 
 
 
@@ -140,21 +144,19 @@ def get_rocauc(val,num_iterations):
 	roc_aucs = np.zeros(num_iterations)
 
 
-	X = val[['sim_score_db','sim_score_dm']]
-	y = val['class']
+	factory = lr_wrapper(val,feature_columns=['sim_score_db','sim_score_dm'],y_column='class')
 
 	for z in range(num_iterations):
-		X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.5, stratify = y)
+		# Slightly annoying thing here that each call to factory uses its own 
+		# train_test_split, so y_test used for recalls will be different than
+		# y_test used in roc aucs
 
-		lr = LogisticRegression(solver='lbfgs',class_weight='balanced')
-		lr.fit(X_train,y_train)
-
-		y_preds = lr.predict(X_test)
-		y_probas = lr.predict_proba(X_test)[:,1]
-
+		y_test,y_preds = factory.fit_and_return_preds()
 		recalls[z] = recall_score(y_test,y_preds)
 		precisions[z] = precision_score(y_test,y_preds)
 		f1s[z] = f1_score(y_test,y_preds)
+
+		y_test,y_probas = factory.fit_and_return_probas()
 		roc_aucs[z] = roc_auc_score(y_test, y_probas)
 
 
@@ -162,32 +164,19 @@ def get_rocauc(val,num_iterations):
 	return np.mean(recalls),np.mean(precisions),np.mean(f1s),np.mean(roc_aucs)
 
 def make_roc_curve_data(val,num_iterations):
+	""" Makes the data to be used by make_roc_curve_confidence"""
 	roc_aucs = np.zeros(num_iterations)
 	tprs = []
 	base_fpr = np.linspace(0, 1, 101)
 
-	X = val[['sim_score_db','sim_score_dm']]
-	y = val['class']
+
+	factory = lr_wrapper(val,feature_columns=['sim_score_db','sim_score_dm'],y_column='class')
 
 	for z in range(num_iterations):
-		X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.5, stratify = y)
-
-		# sns.scatterplot(x='sim_score_db',y='sim_score_dm',hue=y_train.values,data=X_train)
-		# plt.show()
-
-		# print(y_train.value_counts())
-		# print(y_test.value_counts())
-
-		lr = LogisticRegression(solver='lbfgs',class_weight='balanced')
-		lr.fit(X_train,y_train)
-
-		y_preds = lr.predict(X_test)
-		y_probas = lr.predict_proba(X_test)[:,1]
-
+		y_test, y_probas = factory.fit_and_return_probas()
 		roc_aucs[z] = roc_auc_score(y_test, y_probas)
 
 		fpr, tpr, _ = roc_curve(y_test, y_probas)
-
 
 		tpr = interp(base_fpr, fpr, tpr)
 		tpr[0] = 0.0
@@ -209,8 +198,8 @@ def make_roc_curve_confidence(val,num_iterations):
 	tprs_upper = np.minimum(mean_tprs + std, 1)
 	tprs_lower = mean_tprs - std
 
-
-	plt.plot(base_fpr, mean_tprs, 'b')
+	make_baseline_curve(validation_baseline,num_iterations)
+	plt.plot(base_fpr, mean_tprs, 'b',label='My AUROC: %.3f' % roc_auc)
 	plt.fill_between(base_fpr, tprs_lower, tprs_upper, color='grey', alpha=0.3)
 
 	plt.plot([0, 1], [0, 1],'r--')
@@ -219,23 +208,32 @@ def make_roc_curve_confidence(val,num_iterations):
 	plt.ylabel('True Positive Rate')
 	plt.xlabel('False Positive Rate')
 	# plt.axes().set_aspect('equal', 'datalim')
-	plt.title('ROC AUC: %.2f' % roc_auc)
+	plt.legend()
 	plt.show()
 
-def make_baseline_curve(df):
-	X = df['rating_mean']
-	y = df['class']
+def make_baseline_curve(df,num_iterations):
+	factory = lr_wrapper(df,feature_columns=['rating_mean'],y_column='class')
 
-	X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.5, stratify = y)
+	roc_aucs = np.zeros(num_iterations)
+	tprs = []
+	base_fpr = np.linspace(0, 1, 101)
 
-	lr = LogisticRegression(solver='lbfgs',class_weight='balanced')
-	lr.fit(X_train,y_train)
+	for z in range(num_iterations):
+		y_test, y_probas = factory.fit_and_return_probas()
+		roc_aucs[z] = roc_auc_score(y_test, y_probas)
 
-	y_preds = lr.predict(X_test)
-	y_probas = lr.predict_proba(X_test)[:,1]
+		fpr, tpr, _ = roc_curve(y_test, y_probas)
+
+		tpr = interp(base_fpr, fpr, tpr)
+		tpr[0] = 0.0
+		tprs.append(tpr)
 
 
-	
+	tprs = np.array(tprs)
+	mean_tprs = tprs.mean(axis=0)
+	roc_auc = roc_aucs.mean()
+
+	plt.plot(base_fpr,mean_tprs,'g',label='Baseline AUROC: %.2f' % roc_auc)
 
 
 
@@ -347,7 +345,7 @@ def generate_baseline_for_validation(user):
 	return val
 
 validation_baseline = pd.concat([generate_baseline_for_validation(user) for user in authorgroup.index],axis=0)
-
+validation_baseline['class'] = validation_baseline['rating'].apply(lambda x: 0 if x > 3 else 1)
 
 
 
@@ -369,15 +367,21 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 	parms_no_dm = p2[0]
 	parms_dm = p2[1]
 
+	# if (parms_no_dbow,parms_no_dm) != (0,0):
+	# 	continue
+
+
 	try:
-		model_dbow = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
-		model_dm = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dm-{parms_no_dm}.model')
-		# print('Successfuly loaded models')
+		model_dbow = Doc2Vec.load(f'saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+		model_dm = Doc2Vec.load(f'saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+		# print(f'Successfuly loaded models dbow: {parms_no_dbow}, dm: {parms_no_dm}')
 	except:
 		model_dbow = Doc2Vec(dm=0, negative=5, hs=0, min_count=2,
-		 					sample = 0,  min_alpha=0.001 **parms_dbow)
+		 					sample = 0,  min_alpha=0.001, vector_size = parms_dbow['vector_size'],
+		 					alpha = parms_dbow['alpha'], window = parms_dbow['window'])
 		model_dm = Doc2Vec(dm=1,  negative=5, hs=0, min_count=2, 
-			sample=0,  min_alpha = 0.001, **parms_dm)
+			sample=0,  min_alpha = 0.001, vector_size = parms_dm['vector_size'],
+		 					alpha = parms_dm['alpha'], window = parms_dm['window'])
 
 
 		model_dbow.build_vocab(data_tagged.values)
@@ -385,11 +389,11 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 		train_data = utils.shuffle(data_tagged)
 
-		model_dbow.train(train_data, total_examples=len(train_data), epochs=epochs)
-		model_dm.train(train_data, total_examples=len(train_data), epochs=epochs)
+		model_dbow.train(train_data, total_examples=len(train_data), epochs=parms_dbow['epochs'])
+		model_dm.train(train_data, total_examples=len(train_data), epochs=parms_db['epochs'])
 
-		model_dbow.save(f'saved_models/catfood-d2v-dbow-{trialno}.model')
-		model_dm.save(f'saved_models/catfood-d2v-dm-{trialno}.model')
+		model_dbow.save(f'saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+		model_dm.save(f'saved_models/catfood-d2v-dm-{parms_no_dm}.model')
 
 	
 
@@ -460,15 +464,16 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 	recall,precision,f1,roc_auc = get_rocauc(val,50)
 
+	# make_roc_curve_confidence(val,500)
+
 	
 
-	break
 	# ,fpr,tpr,thresholds
 
 	AUC_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
-	RECALL_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
-	PRECISION_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
-	F1_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
+	RECALL_RESULTS[parms_no_dbow,parms_no_dm] = recall
+	PRECISION_RESULTS[parms_no_dbow,parms_no_dm] = precision
+	F1_RESULTS[parms_no_dbow,parms_no_dm] = f1
 
 	# print(f'Recall: {recall}, Precision: {precision}, F1: {f1}, ROC AUC: {roc_auc}')
 
@@ -488,10 +493,10 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 	# with open('validation_metrics.csv','a+') as csvfile:
 	# 	writer = csv.writer(csvfile)
 	# 	writer.writerow(val_metrics)
-	# np.save('validation_results/auc_results.npy',AUC_RESULTS)
-	# np.save('validation_results/f1_results.npy',F1_RESULTS)
-	# np.save('validation_results/recall_results.npy',RECALL_RESULTS)
-	# np.save('validation_results/precision_results.npy',PRECISION_RESULTS)
+	np.save('validation_results/auc_results.npy',AUC_RESULTS)
+	np.save('validation_results/f1_results.npy',F1_RESULTS)
+	np.save('validation_results/recall_results.npy',RECALL_RESULTS)
+	np.save('validation_results/precision_results.npy',PRECISION_RESULTS)
 
 
 
