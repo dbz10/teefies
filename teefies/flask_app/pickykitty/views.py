@@ -16,6 +16,15 @@ con = psycopg2.connect(database = dbname, user = user)
 from .model.predict import get_similar_items
 from .model.misc import check_items_valid, filter_allergens
 
+def format_lists_for_printing(list):
+
+	if not list:
+		out = ['Nothing']
+	else:
+		out = list
+
+	return out
+
 
 
 @app.route('/')
@@ -37,15 +46,13 @@ def selection_results():
 	allergen_checkboxes = request.form.getlist('allergen_checkbox')
 
 
-	liked = ', '.join(positive)
-	disliked = ', '.join(negative)
+	liked = format_lists_for_printing(positive.copy())
+	disliked = format_lists_for_printing(negative.copy())
 
-	if not liked:
-		liked = 'nothing'
+	print(liked)
+	print(disliked)
 
-	if not disliked:
-		disliked = 'nothing'
-
+	print("Length of disliked", len(disliked))
 	try:
 		check_items_valid(products.values())
 	except KeyError:
