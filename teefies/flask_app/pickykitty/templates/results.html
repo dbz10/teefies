@@ -50,7 +50,21 @@
     <div class="container">
       <div class="starter-template">
         <h3>Results:</h3>
-        <p class="lead">You said your kitty liked {{liked}}, and disliked {{disliked}}.</p>
+        <p class="lead">You said your kitty liked </p>
+          <ul class='list-group'>
+            {% for like in liked %}
+            <li class="list-group-item list-group-item-success col-sm-8" > {{like}} </li>
+            {% endfor %}
+          </ul>
+          <p class='lead mt-1'>
+         and disliked </p>
+         <ul class='list-group'>
+          {% for dislike in disliked %}
+            <li class="list-group-item list-group-item-danger col-sm-8" > {{dislike}} </li>
+          {% endfor %}
+         </ul>
+
+       
         <p class="lead"> The crystal ball suggests...</p>
       </div>
 
