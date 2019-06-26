@@ -2,13 +2,58 @@
 
 {% block head %}
 {{ super() }}
+<style>
+html {
+          bottom: 0 !important;
+        }
+
+      body {
+       background-image: url({{ url_for('static', filename='data/background.jpg') }});
+       background-attachment: fixed;
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+       margin-bottom: 100px ; 
+       /*height: 100%;*/
+      /* margin: 0 !important;
+       padding: 0 !important;
+       height: 100% !important;
+       bottom: 0;
+       top: 0;
+       position: absolute;*/
+      }
+      .top-pad {
+        padding-top: 20px;
+      }
+
+      .bottom-pad {
+        margin-bottom : 20px;
+      }
+
+       input[type=text]
+       {
+        width : 100%;
+       }
+
+        h2, h3, h1{
+          color: #ffff !important;
+        } 
+
+      /*  .content-main {
+          height: 100%;
+          bottom: 0;
+          top: 0;
+        }*/
+</style>
 {% endblock %}
 
 {% block title %} PickyKitty {% endblock %}
-
+  
+<!-- {% block precontent %} <div class='jumbotron'></div> {% endblock %} -->
 
 {% block content %}
-<h1 class = 'text-center'> Hello, {{user.nickname}}!</h1>
+
+<h1 class = 'text-center top-pad'> Hello, {{user.nickname}}!</h1>
 
 <div class = "container mt-5">
 	<div class='row'>
@@ -22,41 +67,47 @@
 
 <div class="form-group text-center">
   <form action="/results" method="GET" autocomplete="off">
-    
+    <div class="container-fluid">
+      <div class='row'>
+        <div class='col-6'>
 
-       <h3>  Yum! </h3>
+       <h3 >  Yum! </h3>
 
       <div class="container mt-1 mb-1">
-      	 1) 
+
       	<input type='text' id='product_name_1' name ='pos_0'>
   	  </div>
 
   	  <div class="container mt-1 mb-1">
-      	 2) 
+
       	 <input type='text' id='product_name_2' name ='pos_1'>
   	  </div>
 
       <div class="container mt-1 mb-1">
-      	<td> 3) </td> 
+
       	<tr> <input type='text' id='product_name_3' name ='pos_2'></tr>
   	  </div>
+  </div>
+
+    <div class='col-6'>
 
   	   <h3> No thank you! </h3> 
   	  <div class="container mt-1 mb-1">
-      	<td> 1) </td> 
+
       	<tr> <input type='text' id='product_name_4' name ='neg_0'></tr>
   	  </div>
   	  <div class="container mt-1 mb-1">
-      	<td> 2) </td> 
+
       	<tr> <input type='text' id='product_name_5' name ='neg_1'></tr>
   	  </div>
   	  <div class="container mt-1 mb-1">
-      	<td> 3) </td> 
+
       	<tr> <input type='text' id='product_name_6' name ='neg_2'></tr>
   	  </div>
-    </div>
+  </div>
+</div>
 
-    <div class= 'text-center'>
+    <div class= 'text-center mt-2'>
       <button type='submit' id="submit-button-home" class='btn btn-dark btn=lg'>Find something my kitty will like!</button>
     </div>
 
@@ -67,6 +118,7 @@
 
 
 </div> <!-- /.container-->
+
 
 <!-- scripts-->
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

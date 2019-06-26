@@ -30,6 +30,39 @@
         .btn-space{
           margin-right : 5px !important;
         }
+
+        html {
+          bottom: 0 !important;
+        }
+
+        .smallpad{
+          margin-top: 0 !important;
+          margin-bottom: 0 !important;
+          padding: 2px !important;
+        }
+
+
+        body {
+         background-image: url({{ url_for('static', filename='data/background2.jpg') }});
+         background-attachment: fixed;
+         background-position: center;
+         background-repeat: no-repeat;
+         background-size: cover;
+         margin-bottom: 100px ; 
+         /*height: 100%;*/
+        /* margin: 0 !important;
+         padding: 0 !important;
+         height: 100% !important;
+         bottom: 0;
+         top: 0;
+         position: absolute;*/
+
+         /*color: white;*/
+        }
+
+        /*table, td, th, tr {
+          color: white;
+        }*/
         </style>
 
 {% endblock %}
@@ -56,6 +89,7 @@
             <li class="list-group-item list-group-item-success col-sm-8" > {{like}} </li>
             {% endfor %}
           </ul>
+          {% if disliked %}
           <p class='lead mt-1'>
          and disliked </p>
          <ul class='list-group'>
@@ -63,9 +97,10 @@
             <li class="list-group-item list-group-item-danger col-sm-8" > {{dislike}} </li>
           {% endfor %}
          </ul>
+         {% endif %}
 
        
-        <p class="lead"> The crystal ball suggests...</p>
+        <p class="lead mt-2"> The crystal ball suggests...</p>
       </div>
 
       <table class="table table-hover" style="width:100%" id = 'results_table'>
@@ -81,7 +116,7 @@
         {% for item in output %}
         <tr>
           <th scope="row"> {{ loop.index }} </th>
-          <td>{{ item['name'] }}</td>
+          <td><button type="button" class="btn btn-info smallpad">{{ item['name'] }}</button></td>
           <td class = "price">{{item['price']}}</td> 
           <td><a href="{{ item['url'] }}" target="_blank">Take me there!</a> </td>
         </tr>
@@ -91,12 +126,12 @@
 
       {% if allergen_data %}
       <div class="container">
-        <div class="starter-template">
+        <div class="starter-template whiten">
           Based on the info you gave us, it seems like your cat may dislike some of the following ingredients. Would you like to filter out foods containing any of them?
         </div>
       </div>
       <form method='POST'>
-      <div class='container'>
+      <div class='container text-center'>
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
       
         
@@ -134,10 +169,12 @@
       <div class="starter-template">
 
 
-        <h2>Try again with a different set of foods</h2>
+        <h2 class='text-center'>Try again with a different set of foods</h2>
+        <div class='text-center'>
         <form action="/">
           <button type='submit' class='btn btn-dark btn=lg'>Let's go!</button>
         </form>
+      </div>
     </div>
   </div>
 
@@ -160,10 +197,14 @@
             console.log(tip)
 
             const { top, left } = this.getBoundingClientRect()
+            const bodyRect = document.body.getBoundingClientRect()
 
             tip.style.display = 'inline-block'
-            tip.style.left = (Number(left)+50)+'px'
-            tip.style.top = (Number(top)-20)+'px'
+            const y_offset = top - bodyRect.top
+            const x_offset = left - bodyRect.left
+
+            tip.style.left = (Number(x_offset)+50)+'px'
+            tip.style.top = (Number(y_offset)-20)+'px'
 
 
           })

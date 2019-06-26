@@ -19,7 +19,7 @@ from .model.misc import check_items_valid, filter_allergens
 def format_lists_for_printing(list):
 
 	if not list:
-		out = ['Nothing']
+		out = []
 	else:
 		out = list
 

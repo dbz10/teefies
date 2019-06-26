@@ -48,7 +48,7 @@ def filter_allergens(input):
 			allergens_counter.loc[allergen] += (allergen in row['ingredients'].lower())
 
 	
-	potential_positives = allergens_counter.loc[allergens_counter['count']>2].index.values
+	potential_positives = allergens_counter.loc[allergens_counter['count']>=2].index.values
 
 	print(allergens_counter)
 
