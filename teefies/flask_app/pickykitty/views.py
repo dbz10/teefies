@@ -5,12 +5,17 @@ from sqlalchemy_utils import database_exists, create_database
 import pandas as pd
 import psycopg2
 
-user = 'danielben-zion'
-host = 'localhost'
-dbname = 'catfood_db'
-db = create_engine(f'postgres://{user}{host}/{dbname}')
+from config import Values
+
+user = Values.user
+dbname = Values.dbname
+host = Values.host
+password = Values.password 
+
+
+engine = create_engine('postgres://%s:%s@localhost/%s'%(user,password,dbname))
 con = None
-con = psycopg2.connect(database = dbname, user = user)
+con = psycopg2.connect(database = dbname, user = user,password=password, host=host)
 
 
 from .model.predict import get_similar_items
@@ -30,7 +35,7 @@ def format_lists_for_printing(list):
 @app.route('/')
 @app.route('/index')
 def index():
-	user = {'nickname' : 'Hooman'}
+	user = {'nickname' : 'Cat Parent'}
 	return render_template("index.html",
 		title = 'Home',
 		user = user)
@@ -38,10 +43,53 @@ def index():
 @app.route('/results', methods = ['GET','POST'])
 def selection_results():
 
+
 	products = request.args
+	if len([item for item in products.values() if item]) == 0:
+		query = """
+		SELECT product_info_table.product, price, price_per_oz, avg_rating, url
+		FROM product_info_table
+		INNER JOIN
+		(
+		SELECT product, AVG(rating) as avg_rating
+		FROM reviews_table
+		GROUP BY product
+		) AS mean_rating
+		ON product_info_table.product = mean_rating.product
+		ORDER BY avg_rating DESC
+		LIMIT 5
+		"""
+
+		result_data = pd.read_sql_query(query,con)
+
+
+		output = []
+		for index,row in result_data.iterrows():
+			print(row)
+			# let just nicely format the price per oz
+			price_per_oz = '$ %0.2f' % row['price_per_oz']
+
+
+			output.append(dict(name=row['product'],
+							   price=row['price'],
+							   price_per_oz=price_per_oz,
+							   url=row['url']))
+
+
+		return render_template("noinput.html",  output = output )
+
+
+
+
+
+
+	
 
 	positive = [products.get(f'pos_{i}') for i in range(3) if products.get(f'pos_{i}')]
 	negative = [products.get(f'neg_{i}') for i in range(3) if products.get(f'neg_{i}')]
+
+	duplicates = set(positive).intersection(set(negative))
+	
 
 	allergen_checkboxes = request.form.getlist('allergen_checkbox')
 
@@ -49,10 +97,7 @@ def selection_results():
 	liked = format_lists_for_printing(positive.copy())
 	disliked = format_lists_for_printing(negative.copy())
 
-	print(liked)
-	print(disliked)
 
-	print("Length of disliked", len(disliked))
 	try:
 		check_items_valid(products.values())
 	except KeyError:
@@ -65,7 +110,9 @@ def selection_results():
 
 	# adding support for checkbox remember state
 	allergen_data = [(allergen,'checked' if allergen in allergen_checkboxes else []) for allergen in allergens]
-	print(allergen_data)
+
+
+	
 
 
 	similar_items = get_similar_items(positive = positive, negative = negative)
@@ -99,7 +146,6 @@ def selection_results():
 
 			output.append(dict(name=row['product'].values[0],
 							   price=row['price'].values[0],
-							   num_cans=row['num_cans'].values[0],
 							   price_per_oz=price_per_oz,
 							   url=row['url'].values[0]))
 
@@ -109,7 +155,9 @@ def selection_results():
 			break 
 
 
-
+	if duplicates:
+		return render_template("results_warning.html", liked=liked, disliked = disliked, output = output, 
+		allergen_data = allergen_data , duplicates=duplicates)
 
 	testallergens = ['Chicken','Fish']
 	return render_template("results.html", liked=liked, disliked = disliked, output = output, 

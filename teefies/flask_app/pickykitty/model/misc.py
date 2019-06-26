@@ -27,7 +27,6 @@ def filter_allergens(input):
 	allergens_counter = pd.DataFrame.from_dict({item: 0 for item in common_allergens},
 												orient='index',columns=['count'])
 
-	print(input)
 
 	if len(input) > 1:
 		items = tuple(input)
@@ -50,6 +49,5 @@ def filter_allergens(input):
 	
 	potential_positives = allergens_counter.loc[allergens_counter['count']>=2].index.values
 
-	print(allergens_counter)
 
 	return potential_positives

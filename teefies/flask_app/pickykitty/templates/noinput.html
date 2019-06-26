@@ -77,30 +77,16 @@
     
 
    
-
-    </div> <!-- /.container-->
+ <!-- /.container-->
 
     <div class="container">
       <div class="starter-template">
         <h3>Results:</h3>
-        <p class="lead">You said your kitty liked </p>
-          <ul class='list-group'>
-            {% for like in liked %}
-            <li class="list-group-item list-group-item-success col-sm-8" > {{like}} </li>
-            {% endfor %}
-          </ul>
-          {% if disliked %}
-          <p class='lead mt-1'>
-         and disliked </p>
-         <ul class='list-group'>
-          {% for dislike in disliked %}
-            <li class="list-group-item list-group-item-danger col-sm-8" > {{dislike}} </li>
-          {% endfor %}
-         </ul>
-         {% endif %}
+        <p class="lead">You didn't input any preferences!  </p>
+          
 
        
-        <p class="lead mt-2"> The crystal ball suggests...</p>
+        <p class="lead mt-2"> In this case the best I can do is a list of the top rated foods. </p>
       </div>
 
       <table class="table table-hover" style="width:100%" id = 'results_table'>
@@ -124,42 +110,7 @@
       {% endfor %}
       </table>
 
-      {% if allergen_data %}
-      <div class="container">
-        <div class="starter-template whiten">
-          Based on the info you gave us, it seems like your cat may dislike some of the following ingredients. Would you like to filter out foods containing any of them?
-        </div>
-      </div>
-      <form method='POST'>
-      <div class='container text-center'>
-        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-      
-        
-          
-        {% for allergen, checkval in allergen_data %}
-
-            {% if checkval %}
-              <label class="btn btn-warning btn-space active">
-            {% else %}
-              <label class="btn btn-warning btn-space">
-            {% endif %}
-              <input type="checkbox" name="allergen_checkbox" value='{{ allergen }}'
-              }
-            {{checkval}}> {{allergen}}
-            </label>
-         
-
-        {% endfor %}
-          </div>
-        <button type="submit" class = 'btn btn-primary'> Filter </button>
-      </form>
-      </div>
-      {% endif %}
-
-
-     </div>
-
-
+ 
 
 
 
@@ -169,7 +120,7 @@
       <div class="starter-template">
 
 
-        <h2 class='text-center'>Try again with a different set of foods</h2>
+        <h2 class='text-center'>Try again if you'd like to input some preferences.</h2>
         <div class='text-center'>
         <form action="/">
           <button type='submit' class='btn btn-dark btn=lg'>Let's go!</button>

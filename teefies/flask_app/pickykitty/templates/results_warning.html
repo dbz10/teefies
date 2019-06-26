@@ -100,7 +100,13 @@
          {% endif %}
 
        
-        <p class="lead mt-2"> The crystal ball suggests...</p>
+        <p class="lead mt-2"> Warning: you said your cat both liked and disliked </p>
+        <ul class='list-group'>
+          {% for duplicate in duplicates %}
+            <li class="list-group-item list-group-item-warning col-sm-8" > {{duplicate}} </li>
+          {% endfor %}
+         </ul>
+       <p class="lead mt-2"> As a result, these results may not make much sense and you should take them with a grain of salt. Nonetheless, the crystal ball suggests...</p>
       </div>
 
       <table class="table table-hover" style="width:100%" id = 'results_table'>

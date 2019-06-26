@@ -8,7 +8,7 @@ html {
         }
 
       body {
-       background-image: url({{ url_for('static', filename='data/background.jpg') }});
+       background-image: url( {{ url_for('static', filename='data/background.jpg') }});
        background-attachment: fixed;
        background-position: center;
        background-repeat: no-repeat;
@@ -108,7 +108,7 @@ html {
 </div>
 
     <div class= 'text-center mt-2'>
-      <button type='submit' id="submit-button-home" class='btn btn-dark btn=lg'>Find something my kitty will like!</button>
+      <button type='submit' id="submit-button-home" class='btn btn-dark btn-lg'>Find something my kitty will like!</button>
     </div>
 
   </form>
