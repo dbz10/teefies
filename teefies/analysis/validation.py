@@ -124,6 +124,9 @@ class lr_wrapper(object):
 		and returns y_test, y_preds"""
 		X = self.df[self.feature_columns]
 		y = self.df[self.y_column]
+
+		print(y.value_counts())
+
 		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split,stratify = y)
 
 		self.clf.fit(X_train,y_train)
@@ -330,7 +333,7 @@ label_decoder = data[['product_label','product']].set_index('product_label').to_
 label_encoder = data[['product_label','product']].set_index('product').to_dict()['product_label']
 
 author_count = data.groupby('review_author')['review_author'].count()
-authorgroup = author_count[(author_count > 5) & (author_count < 20)]
+authorgroup = author_count[(author_count > 5) & (author_count < 15)]
 
 mean_product_ratings = data[['product','rating']].groupby('product').mean()
 
@@ -367,14 +370,14 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 	parms_no_dm = p2[0]
 	parms_dm = p2[1]
 
-	# if (parms_no_dbow,parms_no_dm) != (0,0):
-	# 	continue
+	if (parms_no_dbow,parms_no_dm) != (1,20):
+		continue
 
 
 	try:
-		model_dbow = Doc2Vec.load(f'saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
-		model_dm = Doc2Vec.load(f'saved_models/catfood-d2v-dm-{parms_no_dm}.model')
-		# print(f'Successfuly loaded models dbow: {parms_no_dbow}, dm: {parms_no_dm}')
+		model_dbow = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+		model_dm = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+		print(f'Successfuly loaded models dbow: {parms_no_dbow}, dm: {parms_no_dm}')
 	except:
 		model_dbow = Doc2Vec(dm=0, negative=5, hs=0, min_count=2,
 		 					sample = 0,  min_alpha=0.001, vector_size = parms_dbow['vector_size'],
@@ -390,10 +393,10 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 		train_data = utils.shuffle(data_tagged)
 
 		model_dbow.train(train_data, total_examples=len(train_data), epochs=parms_dbow['epochs'])
-		model_dm.train(train_data, total_examples=len(train_data), epochs=parms_db['epochs'])
+		model_dm.train(train_data, total_examples=len(train_data), epochs=parms_dm['epochs'])
 
-		model_dbow.save(f'saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
-		model_dm.save(f'saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+		model_dbow.save(f'~/Desktop/saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+		model_dm.save(f'~/Desktop/saved_models/catfood-d2v-dm-{parms_no_dm}.model')
 
 	
 
@@ -417,12 +420,20 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 	    high_rankings = userdata[userdata['rating'] >= 4].sort_values(by='rating',ascending=False)
 	    
 	    
-	    # if len(low_rankings) < 3:
-	    #     return
+	    if len(low_rankings) < 1:
+	        return
+
+	    if len(high_rankings) < 1:
+	        return
+
+
 	    
 	    
 	    negatives = [val for val in low_rankings.head(2)['product_label']]
 	    positives = [val for val in high_rankings.head(2)['product_label']]
+
+	    # print(positives)
+	    # print(negatives)
 	    
 	    similar_items_dbow = model_dbow.docvecs.most_similar(positive=positives,negative = negatives,topn=num_returned)
 	    similar_items_dm = model_dm.docvecs.most_similar(positive=positives,negative = negatives,topn=num_returned)
@@ -441,15 +452,63 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 
 	    combined_results['avg_sim'] = (combined_results['sim_score_db'] + combined_results['sim_score_dm'])/2
+
 	    
-	    tmp = userdata[['product','rating']].set_index('product')
-	    val = tmp.join(combined_results,how='left')
+	    tmp = userdata[['product','rating','review_author','product_label']].set_index('product')
+	    # print(tmp)
+	    val = tmp.join(combined_results,how='right')
 	    val.dropna(how='any',axis=0,inplace=True)
+	    # print(val)
 	    
 	    
 	    return val
 
+	val = generate_val_data('CarolinaCat')
+	val.plot.scatter(x='avg_sim',y='rating')
+	plt.show()
+
+	#    # precision @ k are currently broken
+	# def precision_at_k(true,prob,pred,k, tol=4.):
+	# 	unique_users = np.unique(user_ids)
+	# 	precisions = np.zeros(unique_users.size)
+	# 	for i in range(unique_users.size):
+	# 	    user_ind = user_ids == unique_users[i]
+	# 	    user_true = true[user_ind]
+	# 	    user_prob = prob[user_ind]
+	# 	    user_pred = pred[user_ind]
+
+	# 		ranked_ind = np.argsort(-user_prob)[:k]
+	# 		precisions[i] = precision_score(user_true[ranked_ind], user_pred_binarized[ranked_ind])
+	# 	    precisions[i] = precision_score(user_true, user_pred_binarized)
+	# 	return precisions
+ 
+	# def MAP_at_k(k, tol=4.):
+	# 	unique_users = np.unique(authorgroup.index)
+	# 	precisions_at_ks = np.zeros((k, unique_users.size))
+	# 	for i in range(k):
+	# 		val = pd.concat([generate_val_data(user,i+1) for user in authorgroup.index],axis=0)
+	# 		val['class'] = val['rating'].apply(lambda x: 0 if x > 3 else 1)
+	# 		factory = lr_wrapper(val,feature_columns=['sim_score_db','sim_score_dm'],y_column='class')
+	# 		val['class_pred_proba'] = factory.fit_and_return_probas()
+
+	# 		true = val['class']
+	# 		# switch probability to predict low rating to probability -> predict high rating. 
+	# 		prob = val['class_pred_proba'].apply(lambda x: 1-x)
+	# 		pred = val['class_pred_proba'].apply(lambda x : 1 if x>0.5 else 0)
+	# 		user_ids = val['review_author']
+
+	# 		precisions_at_ks[i] = precision_at_k(true,prob, pred, user_ids, i+1, tol)
+
+	# 	return np.mean(precisions_at_ks[precisions_at_ks > 0])
+
+	# print("MAP@5:", MAP_at_k(5))
+
 	val = pd.concat([generate_val_data(user) for user in authorgroup.index],axis=0)
+	val['class'] = val['rating'].apply(lambda x: 0 if x > 3 else 1)
+
+
+	
+
 
 	# make_val_boxplots(val)
 	# plt.savefig(f'plots/round1/sim-box-bigrams-dropped_short_reviews-{trialno}.png')
@@ -460,11 +519,12 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 
 
-	val['class'] = val['rating'].apply(lambda x: 0 if x > 3 else 1)
+	
 
-	recall,precision,f1,roc_auc = get_rocauc(val,50)
 
-	# make_roc_curve_confidence(val,500)
+	recall,precision,f1,roc_auc = get_rocauc(val,1)
+
+	make_roc_curve_confidence(val,500)
 
 	
 
@@ -486,17 +546,10 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 	# plt.ylabel('TPR')
 	# plt.show()
 
-
-	# val_metrics = [get_threshold(val,field) for field in ['sim_score_db','sim_score_dm','avg_sim']]
-	# val_metrics.insert(0,trialno)
-
-	# with open('validation_metrics.csv','a+') as csvfile:
-	# 	writer = csv.writer(csvfile)
-	# 	writer.writerow(val_metrics)
-	np.save('validation_results/auc_results.npy',AUC_RESULTS)
-	np.save('validation_results/f1_results.npy',F1_RESULTS)
-	np.save('validation_results/recall_results.npy',RECALL_RESULTS)
-	np.save('validation_results/precision_results.npy',PRECISION_RESULTS)
+	# np.save('validation_results/auc_results.npy',AUC_RESULTS)
+	# np.save('validation_results/f1_results.npy',F1_RESULTS)
+	# np.save('validation_results/recall_results.npy',RECALL_RESULTS)
+	# np.save('validation_results/precision_results.npy',PRECISION_RESULTS)
 
 
 
