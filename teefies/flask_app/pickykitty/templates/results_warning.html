@@ -195,12 +195,10 @@
         const table = document.getElementById('results_table')
         const rows = table.querySelectorAll("td.price")
         const tooltips = document.querySelectorAll('.mytooltip')
-        console.log(tooltips)
 
         rows.forEach( (row,i) => {
           row.addEventListener('mouseover',function(e){
             const tip = document.getElementById(`tooltip-${i+1}`)
-            console.log(tip)
 
             const { top, left } = this.getBoundingClientRect()
             const bodyRect = document.body.getBoundingClientRect()

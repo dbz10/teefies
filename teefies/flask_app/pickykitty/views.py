@@ -45,6 +45,7 @@ def selection_results():
 
 
 	products = request.args
+	
 	if len([item for item in products.values() if item]) == 0:
 		query = """
 		SELECT product_info_table.product, price, price_per_oz, avg_rating, url
