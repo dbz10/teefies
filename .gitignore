@@ -7,3 +7,11 @@ teefies/flask_app/pickykitty/model/*.pkl
 teefies/analysis/plots/
 teefies/flask_app/pickykitty/model/*.model
 teefies/analysis/saved_models/
+useful_webapp_params.txt
+pickykitty-keypair.pem
+NS_record_set.txt
+credentials.csv
+teefies/flask_app/config
+.*
+*.sh
+*.model
