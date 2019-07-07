@@ -1,10 +1,9 @@
 # Imports
-# from gensim.test.utils import common_texts
+
 from gensim.models.doc2vec import Doc2Vec, TaggedDocument
-# from sklearn.linear_model import LogisticRegression
 from sklearn import preprocessing
 from sklearn import utils
-# import csv
+import matplotlib
 import multiprocessing
 import nltk
 from nltk.corpus import stopwords
@@ -24,7 +23,11 @@ from sklearn.linear_model import LogisticRegression
 import csv
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import recall_score, precision_score, f1_score, roc_curve, roc_auc_score, accuracy_score
+import ast
 
+# for configuring file paths
+machine = "mac_air"
+# machine = "honeybadger"
 
 # Parameters for "grid search"
 vector_sizes = [100,150,200,250,300]
@@ -41,19 +44,8 @@ with open( 'parms.txt','w') as pl:
 		pl.write(json.dumps(parm))
 		pl.write("\n")
 
-# standardize text
-def standardize_text(df, text_field):
-    df[text_field] = df[text_field].str.replace(r"http\S+", "")
-    df[text_field] = df[text_field].str.replace(r"http", "")
-    df[text_field] = df[text_field].str.replace(r"@\S+", "")
-    df[text_field] = df[text_field].str.replace(r"[^A-Za-z0-9(),!?@\'\`\"\_\n]", " ")
-    df[text_field] = df[text_field].str.replace(r"@", "at")
-    df[text_field] = df[text_field].str.lower()
-    for brandname in brandnames:
-        df[text_field] = df[text_field].str.replace(brandname.lower(),"")
+cores = multiprocessing.cpu_count()
 
-        
-    return df
 
 def make_val_boxplots(val):
     
@@ -83,7 +75,8 @@ def make_val_boxplot_avg_sim_only(val):
 
 def get_threshold(val,feature_field):
 	""" Gets the threshold value of similarity for which
-	the probability for class = good is >= 75% """
+	the probability for class = good is >= 75% 
+	Not really being used anywhere"""
 	lr = LogisticRegression(random_state=40,class_weight='balanced')
 	X = lrdf[feature_field].values
 	y = lrdf["class"].values
@@ -112,6 +105,7 @@ class lr_wrapper(object):
 		and returns y_test, y_probas"""
 		X = self.df[self.feature_columns]
 		y = self.df[self.y_column]
+
 		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split,stratify = y)
 
 		self.clf.fit(X_train,y_train)
@@ -125,17 +119,19 @@ class lr_wrapper(object):
 		X = self.df[self.feature_columns]
 		y = self.df[self.y_column]
 
-		print(y.value_counts())
+		# sns.scatterplot(x='sim_score_db',y='sim_score_dm',hue=y,data=X)
+		# plt.show()
+		# quit()
+
 
 		X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = self.test_split,stratify = y)
+
+
 
 		self.clf.fit(X_train,y_train)
 		y_preds = self.clf.predict(X_test)
 
 		return y_test,y_preds
-
-
-
 
 def get_rocauc(val,num_iterations):
 	""" Trains a logistic regression and calculates the roc auc 
@@ -147,7 +143,7 @@ def get_rocauc(val,num_iterations):
 	roc_aucs = np.zeros(num_iterations)
 
 
-	factory = lr_wrapper(val,feature_columns=['sim_score_db','sim_score_dm'],y_column='class')
+	factory = lr_wrapper(val,feature_columns=['sim_score_db','sim_score_dm','rating_mean'],y_column='class')
 
 	for z in range(num_iterations):
 		# Slightly annoying thing here that each call to factory uses its own 
@@ -171,9 +167,10 @@ def make_roc_curve_data(val,num_iterations):
 	roc_aucs = np.zeros(num_iterations)
 	tprs = []
 	base_fpr = np.linspace(0, 1, 101)
+	# val['rating_mean'] = val['rating_mean'] - val['rating_mean'].mean()
 
 
-	factory = lr_wrapper(val,feature_columns=['sim_score_db','sim_score_dm'],y_column='class')
+	factory = lr_wrapper(val,feature_columns=['sim_score_db','sim_score_dm','rating_mean'],y_column='class')
 
 	for z in range(num_iterations):
 		y_test, y_probas = factory.fit_and_return_probas()
@@ -197,24 +194,29 @@ def make_roc_curve_confidence(val,num_iterations):
 	base_fpr = np.linspace(0, 1, 101)
 	mean_tprs = tprs.mean(axis=0)
 	std = tprs.std(axis=0)
+	err = 1.96*std/np.sqrt(num_iterations)
 
-	tprs_upper = np.minimum(mean_tprs + std, 1)
-	tprs_lower = mean_tprs - std
+	tprs_upper = np.minimum(mean_tprs + err, 1)
+	tprs_lower = mean_tprs - err
 
 	make_baseline_curve(validation_baseline,num_iterations)
-	plt.plot(base_fpr, mean_tprs, 'b',label='My AUROC: %.3f' % roc_auc)
+
+	plt.plot(base_fpr, mean_tprs, 'b',label='User Specific AUROC: %.2f' % roc_auc)
 	plt.fill_between(base_fpr, tprs_lower, tprs_upper, color='grey', alpha=0.3)
 
 	plt.plot([0, 1], [0, 1],'r--')
 	plt.xlim([0, 1])
 	plt.ylim([0, 1])
-	plt.ylabel('True Positive Rate')
-	plt.xlabel('False Positive Rate')
+	plt.ylabel('Correctly Avoided Bad Food',fontsize=14)
+	plt.xlabel('Accidentally Mislabeled Good Food as Bad',fontsize=14)
 	# plt.axes().set_aspect('equal', 'datalim')
 	plt.legend()
 	plt.show()
 
 def make_baseline_curve(df,num_iterations):
+	""" Makes a ROC curve for logistic regression trained on average product rating only,
+	for comparison with user-specific predictions which use both product avg rating as
+	well as computed similarity scores.  """
 	factory = lr_wrapper(df,feature_columns=['rating_mean'],y_column='class')
 
 	roc_aucs = np.zeros(num_iterations)
@@ -236,13 +238,14 @@ def make_baseline_curve(df,num_iterations):
 	mean_tprs = tprs.mean(axis=0)
 	roc_auc = roc_aucs.mean()
 
-	plt.plot(base_fpr,mean_tprs,'g',label='Baseline AUROC: %.2f' % roc_auc)
+	plt.plot(base_fpr,mean_tprs,'g',label='User Agnostic AUROC: %.2f' % roc_auc)
 
-
-
-
+# Try to load in the cleaned csv file. If not, make it. 
 try: 
 	data = pd.read_csv('prepared_data.csv')
+	data_tagged = data.apply(
+	    lambda r: TaggedDocument(words=ast.literal_eval(r['input']), tags=[r.product_label]), axis=1)
+	print('Succesfuly loaded data')
 except:
 	# Load in the data and display some basic info
 	product_info = pd.read_csv('../data/CatfoodProductInfo.csv')
@@ -273,6 +276,19 @@ except:
 
 	brandnames = set(df['brand'].unique())
 	print(f'There are {len(brandnames)} brands represented across our reviews.')
+
+	def standardize_text(df, text_field):
+		df[text_field] = df[text_field].str.replace(r"http\S+", "")
+		df[text_field] = df[text_field].str.replace(r"http", "")
+		df[text_field] = df[text_field].str.replace(r"@\S+", "")
+		df[text_field] = df[text_field].str.replace(r"[^A-Za-z0-9(),!?@\'\`\"\_\n]", " ")
+		df[text_field] = df[text_field].str.replace(r"@", "at")
+		df[text_field] = df[text_field].str.lower()
+		for brandname in brandnames:
+			df[text_field] = df[text_field].str.replace(brandname.lower(),"")
+
+
+		return df
 
 	nprods = len(df.groupby('product'))
 	nrevs = len(df)
@@ -320,17 +336,27 @@ except:
 	data = data.loc[data['n_words']>=10]
 	print(f'Number of reviews after dropping short ones {len(data)}')
 	# data.head(5)
+	data_tagged = data.apply(
+	    lambda r: TaggedDocument(words=r['input'], tags=[r.product_label]), axis=1)
 
 	data.to_csv('prepared_data.csv')
 
-
-data_tagged = data.apply(
-    lambda r: TaggedDocument(words=r['input'], tags=[r.product_label]), axis=1)
 
 cores = multiprocessing.cpu_count()
 
 label_decoder = data[['product_label','product']].set_index('product_label').to_dict()['product']
 label_encoder = data[['product_label','product']].set_index('product').to_dict()['product_label']
+
+##########################################################################
+# Get the subset of users who have written between 5 and 15 reviews. 
+# Although author names are not unique, hopefully cutting them off at 15 
+# reviews helps avoid massively colliding names, while at the same time 
+# we need people who have written enough reviews to compute similarity
+# scores and then still have something to compare to for validation.
+
+# And anyways, it seems to me that username collisions will only introduce
+# a downward bias in my validation results, so I don't think that
+# the potential of username collisions "breaks" my validation scheme.
 
 author_count = data.groupby('review_author')['review_author'].count()
 authorgroup = author_count[(author_count > 5) & (author_count < 15)]
@@ -362,6 +388,7 @@ PRECISION_RESULTS = np.zeros((len(parms),len(parms)))
 F1_RESULTS = np.zeros((len(parms),len(parms)))
 RECALL_RESULTS = np.zeros((len(parms),len(parms)))
 
+# Commence 90 hour grid search
 for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 
@@ -370,13 +397,21 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 	parms_no_dm = p2[0]
 	parms_dm = p2[1]
 
-	if (parms_no_dbow,parms_no_dm) != (1,20):
-		continue
+	# if (parms_no_dbow,parms_no_dm) != (8,20):
+	# 	continue
 
 
 	try:
-		model_dbow = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
-		model_dm = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+		if machine == "mac_air":
+			model_dbow = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+			model_dm = Doc2Vec.load(f'~/Desktop/saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+		elif machine == "honeybadger":
+			model_dbow = Doc2Vec.load(f'saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+			model_dm = Doc2Vec.load(f'saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+
+
+		# model_dbow = Doc2Vec.load(f'catfood-d2v-dbow.model')
+		# model_dm = Doc2Vec.load(f'catfood-d2v-dm.model')
 		print(f'Successfuly loaded models dbow: {parms_no_dbow}, dm: {parms_no_dm}')
 	except:
 		model_dbow = Doc2Vec(dm=0, negative=5, hs=0, min_count=2,
@@ -385,6 +420,15 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 		model_dm = Doc2Vec(dm=1,  negative=5, hs=0, min_count=2, 
 			sample=0,  min_alpha = 0.001, vector_size = parms_dm['vector_size'],
 		 					alpha = parms_dm['alpha'], window = parms_dm['window'])
+
+		# model_dbow = Doc2Vec(dm=0, vector_size=300, negative=5, hs=0, min_count=2, sample = 0, 
+		#                      workers=cores, alpha=0.025, min_alpha=0.001)
+		# model_dm = Doc2Vec(dm=1, vector_size=300, window=10, negative=5, hs=0, min_count=2, sample=0,
+		#                    workers=cores, alpha=0.025, min_alpha = 0.001)
+
+		# model_dbow.build_vocab([x for x in tqdm(data_tagged.values)])
+		# model_dm.build_vocab([x for x in tqdm(data_tagged.values)])
+
 
 
 		model_dbow.build_vocab(data_tagged.values)
@@ -395,21 +439,34 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 		model_dbow.train(train_data, total_examples=len(train_data), epochs=parms_dbow['epochs'])
 		model_dm.train(train_data, total_examples=len(train_data), epochs=parms_dm['epochs'])
 
-		model_dbow.save(f'~/Desktop/saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
-		model_dm.save(f'~/Desktop/saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+		if machine == "mac_air":
+			model_dbow.save(f'~/Desktop/saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+			model_dm.save(f'~/Desktop/saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+		elif machine == "honeybadger":
+			model_dbow.save(f'saved_models/catfood-d2v-dbow-{parms_no_dbow}.model')
+			model_dm.save(f'saved_models/catfood-d2v-dm-{parms_no_dm}.model')
+
+		model_dbow.delete_temporary_training_data(keep_doctags_vectors=True, keep_inference=True)
+		model_dm.delete_temporary_training_data(keep_doctags_vectors=True, keep_inference=True)
 
 	
 
 
 	def scale_scores(df,field):
+		""" Rescales similarity scores into [-1,1]
+		It will either put the max at 1, or the min at -1.
+		 """
 	    scaleby = max(np.abs(df[field].min()),np.abs(df[field].max()))
 	    df[field] = df[field]/scaleby
 	    return df
 
 	def generate_val_data(user):
+		""" Computes similarity scores for a given user based on two of their >4 star ratings
+		and two of their <= 3 star ratings. Returns data frame """
 	    num_returned = 1000
 	    userdata = data[data['review_author']==user]
-	    
+
+
 	    if len(userdata.groupby('rating').count()) == 1:
 	        return
 	    
@@ -432,20 +489,32 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 	    negatives = [val for val in low_rankings.head(2)['product_label']]
 	    positives = [val for val in high_rankings.head(2)['product_label']]
 
+	    # positives = [2]
+	    # negatives = []
+
 	    # print(positives)
 	    # print(negatives)
 	    
 	    similar_items_dbow = model_dbow.docvecs.most_similar(positive=positives,negative = negatives,topn=num_returned)
 	    similar_items_dm = model_dm.docvecs.most_similar(positive=positives,negative = negatives,topn=num_returned)
 
+	    # print("DBOW:",similar_items_dbow[:5])
+	    # print("DM:",similar_items_dm[:5])
+	    # import time
+	    # time.sleep(3)
+
 	    decoded_dbow = [(label_decoder[label],similarity) for (label,similarity) in similar_items_dbow]
 	    decoded_dm = [(label_decoder[label],similarity) for (label,similarity) in similar_items_dm]
 
 	    dbow_results = pd.DataFrame(decoded_dbow,columns=['product','sim_score'])
-	    dbow_results = scale_scores(dbow_results,'sim_score')
+	    # print('dbow:')
+	    # print(decoded_dbow[:5])
+	    # dbow_results = scale_scores(dbow_results,'sim_score')
 
 	    dm_results = pd.DataFrame(decoded_dm,columns=['product','sim_score'])
-	    dm_results = scale_scores(dm_results,'sim_score')
+	    # print('dm:')
+	    # print(decoded_dm[:5])
+	    # dm_results = scale_scores(dm_results,'sim_score')
 
 	    combined_results = dbow_results.set_index('product').join(dm_results.set_index('product'), how = 'left', 
 	                                        lsuffix = '_db', rsuffix = '_dm')
@@ -455,17 +524,26 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 	    
 	    tmp = userdata[['product','rating','review_author','product_label']].set_index('product')
+
+
+	    all_inputs = positives+negatives
+	    
 	    # print(tmp)
-	    val = tmp.join(combined_results,how='right')
+	    val = tmp.join(combined_results,how='right').join(mean_product_ratings,how='left',rsuffix='_mean')
 	    val.dropna(how='any',axis=0,inplace=True)
-	    # print(val)
+
+	    leftovers = val['product_label'].values
+
 	    
 	    
 	    return val
 
-	val = generate_val_data('CarolinaCat')
-	val.plot.scatter(x='avg_sim',y='rating')
-	plt.show()
+	# some of the blocks below are for producing various visualizations.
+	# MAP at k is still a work in progress. 
+
+	# val = generate_val_data('CarolinaCat')
+	# val.plot.scatter(x='avg_sim',y='rating')
+	# plt.show()
 
 	#    # precision @ k are currently broken
 	# def precision_at_k(true,prob,pred,k, tol=4.):
@@ -508,7 +586,7 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 
 	
-
+	# these box plots are a relic from days of yore
 
 	# make_val_boxplots(val)
 	# plt.savefig(f'plots/round1/sim-box-bigrams-dropped_short_reviews-{trialno}.png')
@@ -521,14 +599,12 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 	
 
+	recall,precision,f1,roc_auc = get_rocauc(val,500)
 
-	recall,precision,f1,roc_auc = get_rocauc(val,1)
-
-	make_roc_curve_confidence(val,500)
+	# make_roc_curve_confidence(val,500)
 
 	
 
-	# ,fpr,tpr,thresholds
 
 	AUC_RESULTS[parms_no_dbow,parms_no_dm] = roc_auc
 	RECALL_RESULTS[parms_no_dbow,parms_no_dm] = recall
@@ -537,31 +613,24 @@ for p1,p2 in tqdm(itertools.product(enumerate(parms),enumerate(parms))):
 
 	# print(f'Recall: {recall}, Precision: {precision}, F1: {f1}, ROC AUC: {roc_auc}')
 
-	# Plotting ROC curve
-	# plt.figure(figsize=(8, 8))
-	# plt.plot(fpr, tpr, lw=2)
-	# plt.plot([0, 1], [0, 1], 'k--')
-	# plt.title('ROC (AUC=%0.3f)' % roc_auc)
-	# plt.xlabel('FPR')
-	# plt.ylabel('TPR')
-	# plt.show()
 
-	# np.save('validation_results/auc_results.npy',AUC_RESULTS)
-	# np.save('validation_results/f1_results.npy',F1_RESULTS)
-	# np.save('validation_results/recall_results.npy',RECALL_RESULTS)
-	# np.save('validation_results/precision_results.npy',PRECISION_RESULTS)
+	np.save('validation_results/auc_results.npy',AUC_RESULTS)
+	np.save('validation_results/f1_results.npy',F1_RESULTS)
+	np.save('validation_results/recall_results.npy',RECALL_RESULTS)
+	np.save('validation_results/precision_results.npy',PRECISION_RESULTS)
 
 
 
-# def find_max(array):
-# 	result = np.where(array == np.amax(array))
-# 	listOfCordinates = list(zip(result[0], result[1]))
-# 	return listOfCordinates
+def find_max(array):
+	result = np.where(array == np.amax(array))
+	listOfCordinates = list(zip(result[0], result[1]))
+	return listOfCordinates
 
-# arrlist = [AUC_RESULTS,F1_RESULTS,RECALL_RESULTS,PRECISION_RESULTS]
-# for name,result_array in zip(['auc','f1','recall','precision'],arrlist ):
-# 	max_inds = find_max(result_array)
-# 	print(f'Max value of {name} are at indices {max_inds}')
+arrlist = [AUC_RESULTS,F1_RESULTS,RECALL_RESULTS,PRECISION_RESULTS]
+for name,result_array in zip(['auc','f1','recall','precision'],arrlist ):
+	max_inds = find_max(result_array)
+	max_val = np.max(result_array)
+	print(f'Max value of {name} is {max_val} at indices {max_inds}')
 	
 
 
